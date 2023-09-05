@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F56C6B9B2AA7A63F00EBCDAA /* FishFolioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */; };
-		F56C6B9D2AA7A63F00EBCDAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9C2AA7A63F00EBCDAA /* ContentView.swift */; };
+		F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */; };
 		F56C6B9F2AA7A64000EBCDAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */; };
 		F56C6BA22AA7A64000EBCDAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56C6BA12AA7A64000EBCDAA /* Preview Assets.xcassets */; };
 		F56C6BAA2AA7A8C700EBCDAA /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BA92AA7A8C700EBCDAA /* TabBarItem.swift */; };
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		F56C6B972AA7A63F00EBCDAA /* FishFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishFolioApp.swift; sourceTree = "<group>"; };
-		F56C6B9C2AA7A63F00EBCDAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F56C6BA12AA7A64000EBCDAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F56C6BA92AA7A8C700EBCDAA /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			children = (
 				F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */,
 				F56C6BA82AA7A86E00EBCDAA /* TabBar */,
-				F56C6B9C2AA7A63F00EBCDAA /* ContentView.swift */,
+				F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */,
 				F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */,
 				F56C6BA02AA7A64000EBCDAA /* Preview Content */,
 			);
@@ -162,7 +162,7 @@
 			files = (
 				F56C6BAA2AA7A8C700EBCDAA /* TabBarItem.swift in Sources */,
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
-				F56C6B9D2AA7A63F00EBCDAA /* ContentView.swift in Sources */,
+				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,
 				F56C6BAC2AA7AB6200EBCDAA /* TabBarView.swift in Sources */,
 				F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */,
