@@ -34,7 +34,7 @@ struct TabBarContainerView<Content: View>: View {
 struct TabBarContainerView_Previews: PreviewProvider {
     
     static let tabs: [TabBarItem] = [
-        .catchs, .settings, .new
+        .fish, .settings, .new, .settings
     ]
 
     static var previews: some View {

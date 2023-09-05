@@ -57,7 +57,7 @@ extension TabBarView {
 
 struct TabBarView_Previews: PreviewProvider {
     static let tabs: [TabBarItem] = [
-        .catchs, .settings, .new
+        .fish, .settings, .new, .settings
     ]
     
     static var previews: some View {

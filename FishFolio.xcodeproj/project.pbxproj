@@ -16,6 +16,7 @@
 		F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BAD2AA7B1D500EBCDAA /* TabBarContainerView.swift */; };
 		F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BAF2AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift */; };
 		F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BB12AA7CA2B00EBCDAA /* TabBarBackground.swift */; };
+		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		F56C6BAD2AA7B1D500EBCDAA /* TabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerView.swift; sourceTree = "<group>"; };
 		F56C6BAF2AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemPreferenceKey.swift; sourceTree = "<group>"; };
 		F56C6BB12AA7CA2B00EBCDAA /* TabBarBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBackground.swift; sourceTree = "<group>"; };
+		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */,
-				F56C6BA82AA7A86E00EBCDAA /* TabBar */,
 				F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */,
+				F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */,
+				F56C6BA82AA7A86E00EBCDAA /* TabBar */,
 				F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */,
 				F56C6BA02AA7A64000EBCDAA /* Preview Content */,
 			);
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56C6BAA2AA7A8C700EBCDAA /* TabBarItem.swift in Sources */,
+				F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */,
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
 				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,
