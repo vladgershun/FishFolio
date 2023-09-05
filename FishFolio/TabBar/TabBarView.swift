@@ -10,7 +10,6 @@ import SwiftUI
 struct TabBarView: View {
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
-    @Namespace private var tabNamespace
     
     var body: some View {
         HStack {
@@ -23,8 +22,7 @@ struct TabBarView: View {
         }
         .padding(6)
         .background(Material.thinMaterial)
-//        .background(Color.secondary.ignoresSafeArea(edges: .bottom))
-        .shadow(color: Color.secondary.opacity(0.3), radius: 10, x: 0, y: 5)
+        .shadow(color: Color.secondary.opacity(0.3), radius: 10, x: 0, y: -3)
     }
 }
 
@@ -39,15 +37,6 @@ extension TabBarView {
         .foregroundColor(selection == tab ? Color.accentColor : Color.gray)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
-        .background(
-            ZStack {
-                if selection == tab {
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.clear)
-                        .matchedGeometryEffect(id: "tab", in: tabNamespace)
-                }
-            }
-        )
     }
     
     private func tabSwitch(tab: TabBarItem) {

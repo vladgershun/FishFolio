@@ -15,7 +15,7 @@ struct MainView: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.blue)
                 .frame(width: 200, height: 100)
-                .tabBarItem(tab: .catchs, selection: $tabSelection)
+                .tabBarItem(tab: .fish, selection: $tabSelection)
             RoundedRectangle(cornerRadius: 10)
                 .fill(.green)
                 .frame(width: 200, height: 100)
