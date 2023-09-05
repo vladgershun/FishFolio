@@ -21,8 +21,8 @@ struct TabBarContainerView<Content: View>: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             content
-                .ignoresSafeArea()
-            TabBarView(tabs: tabs, selection: $selection, localSelection: selection)
+                .frame(maxHeight: .infinity)
+            TabBarView(tabs: tabs, selection: $selection)
             
         }
         .onPreferenceChange(TabBarItemPreferenceKey.self) { newValue in

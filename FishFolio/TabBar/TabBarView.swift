@@ -11,11 +11,8 @@ struct TabBarView: View {
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
     @Namespace private var tabNamespace
-    @State var localSelection: TabBarItem
     
     var body: some View {
-        
-        
         HStack {
             ForEach(tabs, id: \.self) { tab in
                 tabBarItem(tab: tab)
@@ -24,20 +21,10 @@ struct TabBarView: View {
                     }
             }
         }
-        .padding(12)
-//        .background(TabBarBackground().fill(.secondary))
-        .background(Color.secondary)
-        .cornerRadius(10)
-        .shadow(color: Color.black.opacity(0.3), radius: 10, x: 0, y: 5)
-        .padding(.horizontal)
-        .onChange(of: selection) { newValue in
-            withAnimation(.easeInOut) {
-                localSelection = newValue
-            }
-        }
-        
-        
-        
+        .padding(6)
+        .background(Material.thinMaterial)
+//        .background(Color.secondary.ignoresSafeArea(edges: .bottom))
+        .shadow(color: Color.secondary.opacity(0.3), radius: 10, x: 0, y: 5)
     }
 }
 
@@ -45,18 +32,18 @@ extension TabBarView {
     private func tabBarItem(tab: TabBarItem) -> some View {
         VStack {
             Image(systemName: tab.iconName)
-                .font(.subheadline)
+                .font(.title2)
             Text(tab.title)
-                .font(.system(size: 10, weight: .semibold, design: .rounded))
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
         }
-        .foregroundColor(localSelection == tab ? tab.color : Color.white)
+        .foregroundColor(selection == tab ? Color.accentColor : Color.gray)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
         .background(
             ZStack {
-                if localSelection == tab {
+                if selection == tab {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(tab.color.opacity(0.2))
+                        .fill(Color.clear)
                         .matchedGeometryEffect(id: "tab", in: tabNamespace)
                 }
             }
@@ -74,6 +61,6 @@ struct TabBarView_Previews: PreviewProvider {
     ]
     
     static var previews: some View {
-        TabBarView(tabs: tabs, selection: .constant(tabs.first!), localSelection: tabs.first!)
+        TabBarView(tabs: tabs, selection: .constant(tabs.first!))
     }
 }

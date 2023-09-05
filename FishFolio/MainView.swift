@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var selection = "Home"
     @State private var tabSelection: TabBarItem = .catchs
 
     var body: some View {
         TabBarContainerView(selection: $tabSelection) {
-            Color.blue
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.blue)
+                .frame(width: 200, height: 100)
                 .tabBarItem(tab: .catchs, selection: $tabSelection)
-            Color.green
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.green)
+                .frame(width: 200, height: 100)
                 .tabBarItem(tab: .new, selection: $tabSelection)
-            Color.yellow
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.yellow)
+                .frame(width: 200, height: 100)
                 .tabBarItem(tab: .statistics, selection: $tabSelection)
-            Color.red
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.red)
+                .frame(width: 200, height: 100)
                 .tabBarItem(tab: .settings, selection: $tabSelection)
         }
-        
     }
 }
 
