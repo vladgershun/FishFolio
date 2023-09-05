@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selection = "Home"
+    @State private var tabSelection: TabBarItem = .catchs
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabBarContainerView(selection: $tabSelection) {
+            Color.blue
+                .tabBarItem(tab: .catchs, selection: $tabSelection)
+            Color.green
+                .tabBarItem(tab: .new, selection: $tabSelection)
+            Color.yellow
+                .tabBarItem(tab: .statistics, selection: $tabSelection)
+            Color.red
+                .tabBarItem(tab: .settings, selection: $tabSelection)
         }
-        .padding()
+        
     }
 }
 
