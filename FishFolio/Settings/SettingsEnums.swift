@@ -8,6 +8,7 @@
 import Foundation
 
 enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
+    
     case pounds
     case kilograms
     
@@ -15,15 +16,14 @@ enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .pounds:
-            return "Pounds"
-        case .kilograms:
-            return "Kilograms"
+        case .pounds: return "Pounds"
+        case .kilograms: return "Kilograms"
         }
     }
 }
 
 enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
+    
     case inches
     case centimeters
     
@@ -31,15 +31,14 @@ enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .inches:
-            return "Inches"
-        case .centimeters:
-            return "Centimeters"
+        case .inches: return "Inches"
+        case .centimeters: return "Centimeters"
         }
     }
 }
 
 enum TemperatureUnits: CaseIterable, Identifiable, CustomStringConvertible {
+    
     case fahrenheit
     case celsius
     
@@ -47,10 +46,8 @@ enum TemperatureUnits: CaseIterable, Identifiable, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .fahrenheit:
-            return "Fahrenheit"
-        case .celsius:
-            return "Celsius"
+        case .fahrenheit: return "Fahrenheit"
+        case .celsius: return "Celsius"
         }
     }
 }

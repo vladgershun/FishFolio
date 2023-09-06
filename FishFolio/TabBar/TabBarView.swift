@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
     
@@ -27,6 +28,7 @@ struct TabBarView: View {
 }
 
 extension TabBarView {
+    
     private func tabBarItem(tab: TabBarItem) -> some View {
         VStack {
             Image(systemName: tab.iconName)
@@ -45,6 +47,7 @@ extension TabBarView {
 }
 
 struct TabBarView_Previews: PreviewProvider {
+    
     static let tabs: [TabBarItem] = [
         .fish, .settings, .new, .settings
     ]

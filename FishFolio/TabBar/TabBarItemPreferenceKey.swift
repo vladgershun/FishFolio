@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarItemPreferenceKey: PreferenceKey {
+    
     static var defaultValue: [TabBarItem] = []
     
     static func reduce(value: inout [TabBarItem], nextValue: () -> [TabBarItem]) {
@@ -16,6 +17,7 @@ struct TabBarItemPreferenceKey: PreferenceKey {
 }
 
 struct TabBarItemViewModifer: ViewModifier {
+    
     let tab: TabBarItem
     @Binding var selection: TabBarItem
     
@@ -27,6 +29,7 @@ struct TabBarItemViewModifer: ViewModifier {
 }
 
 extension View {
+    
     func tabBarItem(tab: TabBarItem, selection: Binding<TabBarItem>) -> some View {
         self.modifier(TabBarItemViewModifer(tab: tab, selection: selection))
     }

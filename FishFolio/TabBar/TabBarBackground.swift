@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TabBarBackground: Shape {
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
         let waveHeight: CGFloat = 15.0
@@ -49,6 +50,7 @@ struct TabBarBackground: Shape {
 
 
 struct TabBarBackground_Preview: PreviewProvider {
+    
     static var previews: some View {
         TabBarBackground()
             .stroke(.red, lineWidth: 3)

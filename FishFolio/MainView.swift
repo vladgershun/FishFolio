@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    
     @State private var tabSelection: TabBarItem = .fish
 
     var body: some View {
@@ -16,9 +17,7 @@ struct MainView: View {
                 .fill(.blue)
                 .frame(width: 200, height: 100)
                 .tabBarItem(tab: .fish, selection: $tabSelection)
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.green)
-                .frame(width: 200, height: 100)
+            NewFishView()
                 .tabBarItem(tab: .new, selection: $tabSelection)
             RoundedRectangle(cornerRadius: 10)
                 .fill(.yellow)

@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum TabBarItem: Hashable {
+    
     case fish, new, statistics, settings
     
     var iconName: String {
