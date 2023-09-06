@@ -22,7 +22,7 @@ struct TabBarView: View {
         }
         .padding(6)
         .background(Material.thinMaterial)
-        .shadow(color: Color.secondary.opacity(0.3), radius: 10, x: 0, y: -3)
+        .shadow(color: Color.secondary.opacity(0.3), radius: 10, x: 0, y: 10)
     }
 }
 

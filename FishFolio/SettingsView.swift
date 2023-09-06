@@ -7,9 +7,62 @@
 
 import SwiftUI
 
+enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
+    case pounds
+    case kilograms
+    
+    var id: Self { self }
+    
+    var description: String {
+        switch self {
+        case .pounds:
+            return "Pounds"
+        case .kilograms:
+            return "Kilograms"
+        }
+    }
+}
+
+enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
+    case inches
+    case centimeters
+    
+    var id: Self { self }
+    
+    var description: String {
+        switch self {
+        case .inches:
+            return "Inches"
+        case .centimeters:
+            return "Centimeters"
+        }
+    }
+}
+
+
 struct SettingsView: View {
+    @State private var weightUnits: WeightUnits = .pounds
+    @State private var lengthUnits: LengthUnits = .inches
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Form {
+                Section("Units") {
+                    Picker("Weight", selection: $weightUnits) {
+                        ForEach(WeightUnits.allCases) { weight in
+                            Text(weight.description)
+                        }
+                    }
+                    Picker("Length", selection: $lengthUnits) {
+                        ForEach(LengthUnits.allCases) { length in
+                            Text(length.description)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Settings")
+        }
+        
     }
 }
 
