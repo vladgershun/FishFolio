@@ -19,22 +19,22 @@ struct SpeciesSubView: View {
         Form {
             Section("Select Species") {
                 List {
-                    ForEach(allSpecies, id: \.self) { item in
+                    ForEach(allSpecies, id: \.self) { species in
                         HStack {
-                            Text(item)
+                            Text(species)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Spacer()
-                            if species == item {
+                            if self.species == species {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.blue)
                             }
                             
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            species = item
+                            self.species = species
                         }
-                        .onChange(of: species) { newValue in
+                        .onChange(of: self.species) { _ in
                             dismiss()
                         }
                     }

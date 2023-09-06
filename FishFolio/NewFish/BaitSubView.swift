@@ -11,21 +11,44 @@ struct BaitSubView: View {
     
     @Environment(\.dismiss) var dismiss
     @Binding var bait: String
-    let baits = ["Eggs", "Worms", "Corn"]
+    @State var baits = ["Eggs", "Worms", "Corn"]
+    
+    @State private var selected = false
     
     var body: some View {
         Form {
-            Picker("Select Bait", selection: $bait) {
-                ForEach(baits, id: \.self) { bait in
-                    Text(bait)
+            Section("Select Bait") {
+                List {
+                    ForEach(baits, id: \.self) { bait in
+                        HStack {
+                            Text(bait)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Spacer()
+                            if self.bait == bait {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
+                            
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            self.bait = bait
+                        }
                         .onChange(of: self.bait) { _ in
                             dismiss()
                         }
+                    }
+                    .onDelete(perform: testDelete)
                 }
             }
-            .pickerStyle(.inline)
         }
-        
+        .toolbar {
+            Button { } label: { Image(systemName: "plus") }
+        }
+    }
+    
+    func testDelete(at offsets: IndexSet) {
+        baits.remove(atOffsets: offsets)
     }
 }
 
