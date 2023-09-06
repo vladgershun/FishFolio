@@ -13,6 +13,7 @@
 		F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA012AA908A9007114EC /* SpeciesSubView.swift */; };
 		F52ACA042AA920AA007114EC /* LengthSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA032AA920AA007114EC /* LengthSubView.swift */; };
 		F52ACA062AA9423B007114EC /* WeightSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA052AA9423B007114EC /* WeightSubView.swift */; };
+		F52ACA082AA9438B007114EC /* TemperatureSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA072AA9438B007114EC /* TemperatureSubView.swift */; };
 		F56C6B9B2AA7A63F00EBCDAA /* FishFolioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */; };
 		F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */; };
 		F56C6B9F2AA7A64000EBCDAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		F52ACA012AA908A9007114EC /* SpeciesSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesSubView.swift; sourceTree = "<group>"; };
 		F52ACA032AA920AA007114EC /* LengthSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthSubView.swift; sourceTree = "<group>"; };
 		F52ACA052AA9423B007114EC /* WeightSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSubView.swift; sourceTree = "<group>"; };
+		F52ACA072AA9438B007114EC /* TemperatureSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSubView.swift; sourceTree = "<group>"; };
 		F56C6B972AA7A63F00EBCDAA /* FishFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishFolioApp.swift; sourceTree = "<group>"; };
 		F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -71,11 +73,12 @@
 			isa = PBXGroup;
 			children = (
 				F52AC9F52AA857DB007114EC /* NewFishView.swift */,
+				F52AC9F92AA86BBA007114EC /* NewFishEnums.swift */,
 				F52ACA012AA908A9007114EC /* SpeciesSubView.swift */,
 				F52AC9FF2AA9083D007114EC /* BaitSubView.swift */,
-				F52AC9F92AA86BBA007114EC /* NewFishEnums.swift */,
 				F52ACA032AA920AA007114EC /* LengthSubView.swift */,
 				F52ACA052AA9423B007114EC /* WeightSubView.swift */,
+				F52ACA072AA9438B007114EC /* TemperatureSubView.swift */,
 			);
 			path = NewFish;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
 				F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */,
 				F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */,
+				F52ACA082AA9438B007114EC /* TemperatureSubView.swift in Sources */,
 				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
 				F52ACA002AA9083D007114EC /* BaitSubView.swift in Sources */,
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,

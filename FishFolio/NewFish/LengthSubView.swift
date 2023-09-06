@@ -49,9 +49,17 @@ struct LengthSubView: View {
                     }
                 }
             }
+            
+            Button("CLEAR") {
+                withAnimation(.easeInOut) {
+                    lengthWhole = 0
+                    lengthDecimal = 0
+                }
+            }
+            
             Spacer()
         }
-        
+ 
     }
 }
 

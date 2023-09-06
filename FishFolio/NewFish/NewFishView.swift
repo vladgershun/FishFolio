@@ -103,15 +103,18 @@ struct NewFishView: View {
                     TextField("Name", text: $locationName)
                         .focused($isInputActive)
                     
-                    Picker("Water Temperature", selection: $waterTemperature) {
-                        ForEach(32..<100, id: \.self) { waterTemperature in
-                            Text("\(waterTemperature) °F")
-                                .tag(waterTemperature as Int?)
+                    NavigationLink {
+                        TemperatureSubView(waterTemperature: $waterTemperature)
+                    } label: {
+                        HStack {
+                            Text("Water Temperature")
+                            Spacer()
+                            if let waterTemperature {
+                                Text("\(waterTemperature)°F")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
-                    .tint(.secondary)
-                    .pickerStyle(.navigationLink)
-                    .focused($isInputActive)
                     
                     Picker("Water Condition", selection: $waterCondition) {
                         ForEach(WaterCondition.allCases) { waterCondition in

@@ -49,6 +49,14 @@ struct WeightSubView: View {
                     }
                 }
             }
+            
+            Button("CLEAR") {
+                withAnimation(.easeInOut) {
+                    weightWhole = 0
+                    weightDecimal = 0
+                }
+            }
+            
             Spacer()
         }   
     }
