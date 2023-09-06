@@ -81,8 +81,6 @@ struct SettingsView: View {
                         
                     }
                     
-                    
-                    
                     Section {
                         Button("Delete Species Data", role: .destructive) { speciesData = true }
                             .foregroundColor(.orange)

@@ -16,7 +16,6 @@ struct SpeciesSubView: View {
     @State private var selected = false
     
     var body: some View {
-        
         Form {
             Section("Select Species") {
                 List {
@@ -33,7 +32,6 @@ struct SpeciesSubView: View {
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            print("hit\n\n\n")
                             species = item
                         }
                         .onChange(of: species) { newValue in
@@ -42,15 +40,11 @@ struct SpeciesSubView: View {
                     }
                     .onDelete(perform: testDelete)
                 }
-                
-                
             }
-            }
-        .toolbar {
-            EditButton()
         }
-        
-        
+        .toolbar {
+            Button { } label: { Image(systemName: "plus") }
+        }
     }
     
     func testDelete(at offsets: IndexSet) {
