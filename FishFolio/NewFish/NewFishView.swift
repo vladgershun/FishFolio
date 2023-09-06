@@ -23,23 +23,31 @@ struct NewFishView: View {
         NavigationView {
             Form {
                 Section("Fish") {
-                    TextField("Species", text: $species)
-                        .focused($isInputActive)
-                    TextField("Bait", text: $bait)
-                        .focused($isInputActive)
+                    
+                    NavigationLink {
+                        SpeciesSubView(species: $species)
+                    } label: {
+                        HStack {
+                            Text("Species")
+                            Spacer()
+                            Text(species)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                    }
                     
                     
-//                    NavigationLink {
-//                        TestView(bait: $bait)
-//                    } label: {
-//                        HStack {
-//                            Text("Bait")
-//                            Spacer()
-//                            Text("item")
-//                                .foregroundColor(.secondary)
-//                        }
-//
-//                    }
+                    NavigationLink {
+                        BaitSubView(bait: $bait)
+                    } label: {
+                        HStack {
+                            Text("Bait")
+                            Spacer()
+                            Text(bait)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                    }
                     
                     
                     
@@ -67,7 +75,7 @@ struct NewFishView: View {
                 Section("Location") {
                     TextField("Name", text: $locationName)
                         .focused($isInputActive)
-                    
+    
                     Picker("Water Temperature", selection: $waterTemperature) {
                         ForEach(32..<100, id: \.self) { waterTemperature in
                             Text("\(waterTemperature) °F")
@@ -110,25 +118,5 @@ struct NewFishView_Previews: PreviewProvider {
     }
 }
 
-struct TestView: View {
-    
-    @Binding var bait: String?
-    @State private var baitList: [String] = Array(repeating: "Bait", count: 1)
-    
-    var body: some View {
-        
-        List(selection: $bait) {
-            Picker("Select Bait", selection: $bait) {
-                ForEach(baitList, id: \.self) { selected in
-                    Text(selected)
-                        .onTapGesture {
-                            bait = selected
-                        }
-                }
-            }
-            .pickerStyle(.inline)
-            
-        }
-    }
-}
+
 
