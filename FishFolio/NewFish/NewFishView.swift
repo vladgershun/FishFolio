@@ -26,7 +26,19 @@ struct NewFishView: View {
     @State private var lengthWhole: Int?
     @State private var lengthDecimal: Int?
     
-    @State private var weight: Double?
+    @State private var weightWhole: Int?
+    @State private var weightDecimal: Int?
+    
+    private var weight: Double? {
+        if let weightWhole {
+            return Double(weightWhole) + (Double(weightDecimal ?? 0) * 0.1)
+        }
+        if let weightDecimal {
+            return Double(weightWhole ?? 0) + (Double(weightDecimal) * 0.1)
+        }
+        return nil
+    }
+    
     @State private var bait: String = ""
     @State private var waterCondition: WaterCondition?
     @State private var waterTemperature: Int?
@@ -46,7 +58,6 @@ struct NewFishView: View {
                             Text(species)
                                 .foregroundColor(.secondary)
                         }
-                        
                     }
                     
                     NavigationLink {
@@ -58,7 +69,6 @@ struct NewFishView: View {
                             Text(bait)
                                 .foregroundColor(.secondary)
                         }
-                        
                     }
                     
                     NavigationLink {
@@ -73,19 +83,20 @@ struct NewFishView: View {
                             }
                             
                         }
-                        
                     }
                     
-                    
-                    Picker("Weight", selection: $weight) {
-                        ForEach(Array(stride(from: 1, through: 100, by: 0.1)), id: \.self) { weight in
-                            Text("^[\(weight, specifier: "%.1f") \("pound")](inflect: true)")
-                                .tag(weight as Double?)
+                    NavigationLink {
+                        WeightSubView(weightWhole: $weightWhole, weightDecimal: $weightDecimal)
+                    } label: {
+                        HStack {
+                            Text("Weight")
+                            Spacer()
+                            if let weight {
+                                Text("^[\(weight, specifier: "%.1f") \("pound")](inflect: true)")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
-                    .tint(.secondary)
-                    .pickerStyle(.navigationLink)
-                    .focused($isInputActive)
                 }
                 
                 Section("Location") {
