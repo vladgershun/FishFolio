@@ -7,42 +7,12 @@
 
 import SwiftUI
 
-enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
-    case pounds
-    case kilograms
-    
-    var id: Self { self }
-    
-    var description: String {
-        switch self {
-        case .pounds:
-            return "Pounds"
-        case .kilograms:
-            return "Kilograms"
-        }
-    }
-}
-
-enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
-    case inches
-    case centimeters
-    
-    var id: Self { self }
-    
-    var description: String {
-        switch self {
-        case .inches:
-            return "Inches"
-        case .centimeters:
-            return "Centimeters"
-        }
-    }
-}
-
-
 struct SettingsView: View {
     @State private var weightUnits: WeightUnits = .pounds
     @State private var lengthUnits: LengthUnits = .inches
+    @State private var temperatureUnits: TemperatureUnits = .fahrenheit
+    
+    @State private var isShowing = false
     
     var body: some View {
         NavigationView {
@@ -58,11 +28,40 @@ struct SettingsView: View {
                             Text(length.description)
                         }
                     }
+                    Picker("Temperature", selection: $temperatureUnits) {
+                        ForEach(TemperatureUnits.allCases) { temperature in
+                            Text(temperature.description)
+                        }
+                    }
                 }
+                
+                Section {
+                    HStack {
+                        Text("Version")
+                        Spacer()
+                        Text("Beta 1.0")
+                            .foregroundColor(.secondary)
+                    }
+                    HStack {
+                        Text("Developer")
+                        Spacer()
+                        Text("VStudios")
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Section {
+                    Button("Delete All Data", role: .destructive) {  isShowing = true }
+                }
+                
             }
             .navigationTitle("Settings")
+            .alert("Delete All Data?", isPresented: $isShowing) {
+                Button("Delete", role: .destructive) {}
+            } message: {
+                Text("You cannont undo this action")
+            }
         }
-        
     }
 }
 
