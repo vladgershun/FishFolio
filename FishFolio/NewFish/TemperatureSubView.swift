@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TemperatureSubView: View {
     
+    @Environment(\.dismiss) var dismiss
     @Binding var waterTemperature: Int?
     
     var body: some View {
@@ -33,6 +34,9 @@ struct TemperatureSubView: View {
             }
             .tint(.secondary)
             .pickerStyle(.wheel)
+            .onChange(of: waterTemperature) { _ in
+                dismiss()
+            }
             
             Button("CLEAR") {
                 withAnimation(.easeInOut) {

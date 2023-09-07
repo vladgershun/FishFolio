@@ -116,15 +116,22 @@ struct NewFishView: View {
                         }
                     }
                     
-                    Picker("Water Condition", selection: $waterCondition) {
-                        ForEach(WaterCondition.allCases) { waterCondition in
-                            Text(waterCondition.description)
-                                .tag(waterCondition as WaterCondition?)
+                    NavigationLink {
+                        WaterConditionSubView(waterCondition: $waterCondition)
+                    } label: {
+                        HStack {
+                            Text("Water Condition")
+                            Spacer()
+                            if let waterCondition {
+                                Text((waterCondition.description))
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
-                    .tint(.secondary)
-                    .pickerStyle(.navigationLink)
-                    .focused($isInputActive)
+                    
+                    
+                    
+                    
                 }
                 
                 Button {
