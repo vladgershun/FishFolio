@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeightSubView: View {
     
+    @Environment(\.dismiss) var dismiss
     @Binding var weightWhole: Int?
     @Binding var weightDecimal: Int?
     
@@ -54,6 +55,10 @@ struct WeightSubView: View {
                 withAnimation(.easeInOut) {
                     weightWhole = 0
                     weightDecimal = 0
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dismiss()
                 }
             }
             

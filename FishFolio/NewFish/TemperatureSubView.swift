@@ -35,12 +35,18 @@ struct TemperatureSubView: View {
             .tint(.secondary)
             .pickerStyle(.wheel)
             .onChange(of: waterTemperature) { _ in
-                dismiss()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dismiss()
+                }
             }
             
             Button("CLEAR") {
                 withAnimation(.easeInOut) {
                     waterTemperature = nil
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dismiss()
                 }
             }
             

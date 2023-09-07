@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LengthSubView: View {
     
+    @Environment(\.dismiss) var dismiss
     @Binding var lengthWhole: Int?
     @Binding var lengthDecimal: Int?
     
@@ -54,6 +55,10 @@ struct LengthSubView: View {
                 withAnimation(.easeInOut) {
                     lengthWhole = 0
                     lengthDecimal = 0
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    dismiss()
                 }
             }
             
