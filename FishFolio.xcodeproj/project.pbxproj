@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51DE0482AA95570000E744D /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51DE0472AA95570000E744D /* StatisticsView.swift */; };
 		F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AC9F52AA857DB007114EC /* NewFishView.swift */; };
 		F52AC9FA2AA86BBA007114EC /* NewFishEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AC9F92AA86BBA007114EC /* NewFishEnums.swift */; };
 		F52ACA002AA9083D007114EC /* BaitSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52AC9FF2AA9083D007114EC /* BaitSubView.swift */; };
 		F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA012AA908A9007114EC /* SpeciesSubView.swift */; };
 		F52ACA042AA920AA007114EC /* LengthSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA032AA920AA007114EC /* LengthSubView.swift */; };
 		F52ACA062AA9423B007114EC /* WeightSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA052AA9423B007114EC /* WeightSubView.swift */; };
-		F52ACA082AA9438B007114EC /* TemperatureSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA072AA9438B007114EC /* TemperatureSubView.swift */; };
 		F52ACA0A2AA948A2007114EC /* WaterConditionSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52ACA092AA948A2007114EC /* WaterConditionSubView.swift */; };
 		F56C6B9B2AA7A63F00EBCDAA /* FishFolioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */; };
 		F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */; };
@@ -29,13 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F51DE0472AA95570000E744D /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		F52AC9F52AA857DB007114EC /* NewFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFishView.swift; sourceTree = "<group>"; };
 		F52AC9F92AA86BBA007114EC /* NewFishEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFishEnums.swift; sourceTree = "<group>"; };
 		F52AC9FF2AA9083D007114EC /* BaitSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaitSubView.swift; sourceTree = "<group>"; };
 		F52ACA012AA908A9007114EC /* SpeciesSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesSubView.swift; sourceTree = "<group>"; };
 		F52ACA032AA920AA007114EC /* LengthSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthSubView.swift; sourceTree = "<group>"; };
 		F52ACA052AA9423B007114EC /* WeightSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSubView.swift; sourceTree = "<group>"; };
-		F52ACA072AA9438B007114EC /* TemperatureSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureSubView.swift; sourceTree = "<group>"; };
 		F52ACA092AA948A2007114EC /* WaterConditionSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterConditionSubView.swift; sourceTree = "<group>"; };
 		F56C6B972AA7A63F00EBCDAA /* FishFolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishFolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishFolioApp.swift; sourceTree = "<group>"; };
@@ -62,6 +62,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F51DE0462AA95553000E744D /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				F51DE0472AA95570000E744D /* StatisticsView.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		F52AC9F42AA85792007114EC /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,7 +88,6 @@
 				F52AC9FF2AA9083D007114EC /* BaitSubView.swift */,
 				F52ACA032AA920AA007114EC /* LengthSubView.swift */,
 				F52ACA052AA9423B007114EC /* WeightSubView.swift */,
-				F52ACA072AA9438B007114EC /* TemperatureSubView.swift */,
 				F52ACA092AA948A2007114EC /* WaterConditionSubView.swift */,
 			);
 			path = NewFish;
@@ -108,6 +115,7 @@
 				F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */,
 				F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */,
 				F52AC9F72AA86B8B007114EC /* NewFish */,
+				F51DE0462AA95553000E744D /* Statistics */,
 				F52AC9F42AA85792007114EC /* Settings */,
 				F56C6BA82AA7A86E00EBCDAA /* TabBar */,
 				F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */,
@@ -212,13 +220,13 @@
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
 				F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */,
 				F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */,
-				F52ACA082AA9438B007114EC /* TemperatureSubView.swift in Sources */,
 				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
 				F52ACA002AA9083D007114EC /* BaitSubView.swift in Sources */,
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,
 				F56C6BAC2AA7AB6200EBCDAA /* TabBarView.swift in Sources */,
 				F52ACA0A2AA948A2007114EC /* WaterConditionSubView.swift in Sources */,
 				F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */,
+				F51DE0482AA95570000E744D /* StatisticsView.swift in Sources */,
 				F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */,
 				F52AC9FA2AA86BBA007114EC /* NewFishEnums.swift in Sources */,
 				F52ACA062AA9423B007114EC /* WeightSubView.swift in Sources */,

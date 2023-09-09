@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var weightUnits: WeightUnits = .pounds
-    @State private var lengthUnits: LengthUnits = .inches
-    @State private var temperatureUnits: TemperatureUnits = .fahrenheit
+    @AppStorage("weightUnits") private var weightUnits: WeightUnits = .pounds
+    @AppStorage("lengthUnits") private var lengthUnits: LengthUnits = .inches
+    @AppStorage("temperatureUnits") private var temperatureUnits: TemperatureUnits = .fahrenheit
     
-    @State private var speciesData = false
-    @State private var baitData = false
-    @State private var locationData = false
-    @State private var allData = false
+    @State private var speciesPresented = false
+    @State private var baitPresented = false
+    @State private var locationPresented = false
+    @State private var allPresented = false
     
     var body: some View {
         NavigationView {
@@ -82,35 +82,32 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        Button("Delete Species Data", role: .destructive) { speciesData = true }
-                            .foregroundColor(.orange)
-                        Button("Delete Bait Data", role: .destructive) { baitData = true }
-                            .foregroundColor(.orange)
-                        Button("Delete Location Data", role: .destructive) { locationData = true }
-                            .foregroundColor(.orange)
+                        Button("Delete Species Data", role: .destructive) { speciesPresented = true }
+                        Button("Delete Bait Data", role: .destructive) { baitPresented = true }
+                        Button("Delete Location Data", role: .destructive) { locationPresented = true }
                     }
                     
                     Section {
-                        Button("Delete All Data", role: .destructive) { allData = true }
+                        Button("Delete All Data", role: .destructive) { allPresented = true }
                     }
                 }
                 .navigationTitle("Settings")
-                .confirmationDialog("Delete All Species?", isPresented: $speciesData) {
+                .confirmationDialog("Delete All Species?", isPresented: $speciesPresented) {
                     Button("Delete", role: .destructive) { }
                 } message: {
                     Text("This will delete all user generated species")
                 }
-                .confirmationDialog("Delete All Bait?", isPresented: $baitData) {
+                .confirmationDialog("Delete All Bait?", isPresented: $baitPresented) {
                     Button("Delete", role: .destructive) { }
                 } message: {
                     Text("This will delete all user generated bait")
                 }
-                .confirmationDialog("Delete All Locations?", isPresented: $locationData) {
+                .confirmationDialog("Delete All Locations?", isPresented: $locationPresented) {
                     Button("Delete", role: .destructive) { }
                 } message: {
                     Text("This will delete all user generated locations")
                 }
-                .confirmationDialog("Delete All Data?", isPresented: $allData) {
+                .confirmationDialog("Delete All Data?", isPresented: $allPresented) {
                     Button("Delete", role: .destructive) { }
                 } message: {
                     Text("You cannont undo this action")

@@ -13,8 +13,10 @@ struct WaterConditionSubView: View {
     @Binding var waterCondition: WaterCondition?
     
     var body: some View {
-        List {
+        Form {
             Picker("Select Water Condition", selection: $waterCondition) {
+                Text("None")
+                    .tag(nil as WaterCondition?)
                 ForEach(WaterCondition.allCases) { waterCondition in
                     Text(waterCondition.description)
                         .tag(waterCondition as WaterCondition?)

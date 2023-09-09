@@ -7,8 +7,7 @@
 
 import Foundation
 
-enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
-    
+enum WeightUnits: String, CaseIterable, Identifiable, CustomStringConvertible {
     case pounds
     case kilograms
     
@@ -22,7 +21,7 @@ enum WeightUnits: CaseIterable, Identifiable, CustomStringConvertible {
     }
 }
 
-enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
+enum LengthUnits: String, CaseIterable, Identifiable, CustomStringConvertible {
     
     case inches
     case centimeters
@@ -37,7 +36,7 @@ enum LengthUnits: CaseIterable, Identifiable, CustomStringConvertible {
     }
 }
 
-enum TemperatureUnits: CaseIterable, Identifiable, CustomStringConvertible {
+enum TemperatureUnits: String, CaseIterable, Identifiable, CustomStringConvertible {
     
     case fahrenheit
     case celsius

@@ -56,10 +56,6 @@ struct LengthSubView: View {
                     lengthWhole = 0
                     lengthDecimal = 0
                 }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    dismiss()
-                }
             }
             
             Spacer()

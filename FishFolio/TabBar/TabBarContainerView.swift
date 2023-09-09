@@ -19,12 +19,14 @@ struct TabBarContainerView<Content: View>: View {
     }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        ZStack {
             content
-                .frame(maxHeight: .infinity)
-            TabBarView(tabs: tabs, selection: $selection)
-            
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .safeAreaInset(edge: .bottom) {
+            TabBarView(tabs: tabs, selection: $selection)
+        }
+        .ignoresSafeArea(.keyboard, edges: .bottom)
         .onPreferenceChange(TabBarItemPreferenceKey.self) { newValue in
             self.tabs = newValue
         }
