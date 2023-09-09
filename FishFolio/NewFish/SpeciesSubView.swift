@@ -14,12 +14,15 @@ struct SpeciesSubView: View {
     @Binding var species: String
     @State var allSpecies = ["Salmon", "Trout", "Bass"]
     @State private var selected = false
+    @State private var searchText = ""
+    @State private var newSpeciesShowing = false
+    @State private var newSpecies = ""
     
     var body: some View {
-        Form {
-            Section("Select Species") {
+        NavigationView {
+            Form {
                 List {
-                    ForEach(allSpecies, id: \.self) { species in
+                    ForEach(searchedSpecies, id: \.self) { species in
                         HStack {
                             Text(species)
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -28,7 +31,6 @@ struct SpeciesSubView: View {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.blue)
                             }
-                            
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
@@ -42,13 +44,36 @@ struct SpeciesSubView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline) //Temp fix to spacing bug.
+        .searchable(text: $searchText, prompt: "Search Species")
         .toolbar {
-            Button { } label: { Image(systemName: "plus") }
+            Button { newSpeciesShowing = true } label: { Image(systemName: "plus") }
+        }
+        .alert("Add Species", isPresented: $newSpeciesShowing) {
+            TextField("", text: $newSpecies)
+            Button("Add") { addSpecies(newSpecies) }
+        }
+    }
+    
+    var searchedSpecies: [String] {
+        if searchText.isEmpty {
+            return allSpecies
+        } else {
+            return allSpecies.filter { $0.localizedCaseInsensitiveContains(searchText) }
         }
     }
     
     func testDelete(at offsets: IndexSet) {
+        // Bug where if you search something and try to delete it will always delete index 0
         allSpecies.remove(atOffsets: offsets)
+    }
+    
+    func addSpecies(_ species: String) {
+        if !species.isEmpty {
+            allSpecies.append(species)
+            newSpecies = ""
+        }
+        
     }
 }
 
