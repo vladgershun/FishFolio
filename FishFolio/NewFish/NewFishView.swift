@@ -41,7 +41,6 @@ struct NewFishView: View {
     
     @State private var bait: String = ""
     @State private var waterCondition: WaterCondition?
-    @State private var waterTemperature: Int?
     @State private var locationName: String = ""
     
     @State private var lengthExpanded: Bool = false
@@ -51,9 +50,14 @@ struct NewFishView: View {
         NavigationView {
             Form {
                 Section("Fish") {
-                    
                     NavigationLink {
                         SpeciesSubView(species: $species)
+                            .onAppear {
+                                withAnimation {
+                                    weightExpanded = false
+                                    lengthExpanded = false
+                                }
+                            }
                     } label: {
                         HStack {
                             Text("Species")
@@ -63,8 +67,15 @@ struct NewFishView: View {
                         }
                     }
                     
+                    
                     NavigationLink {
                         BaitSubView(bait: $bait)
+                            .onAppear {
+                                withAnimation {
+                                    weightExpanded = false
+                                    lengthExpanded = false
+                                }
+                            }
                     } label: {
                         HStack {
                             Text("Bait")
@@ -73,12 +84,6 @@ struct NewFishView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    
-//                    NavigationLink {
-//                        LengthSubView(lengthWhole: $lengthWhole, lengthDecimal: $lengthDecimal)
-//                    } label: {
-//                        LabeledContent("Length", value: length.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .wide))
-//                    }
                     
                     DisclosureGroup(isExpanded: $lengthExpanded) {
                         HStack(spacing: 0.0) {
@@ -115,7 +120,6 @@ struct NewFishView: View {
                     } label: {
                         HStack {
                             LabeledContent("Length", value: length.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .wide))
-                                
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
@@ -126,8 +130,6 @@ struct NewFishView: View {
                         }
                     }
                     .tint(.secondary)
-                    
-
                     
                     DisclosureGroup(isExpanded: $weightExpanded) {
                         HStack(spacing: 0.0) {
@@ -174,11 +176,6 @@ struct NewFishView: View {
                         }
                     }
                     .tint(.secondary)
-                    
-                    
-                    
-                    
-                    
                 }
                 
                 Section("Location") {
@@ -186,8 +183,6 @@ struct NewFishView: View {
                         .focused($isInputActive)
                         .toolbar {
                             ToolbarItem(placement: .keyboard) {
-                                
-                                
                                 HStack {
                                     Spacer()
                                     Button("Done") { isInputActive = false }
@@ -199,7 +194,6 @@ struct NewFishView: View {
                                 weightExpanded = false
                                 lengthExpanded = false
                             }
-                            
                         }
                     
                     Picker("Water Condition", selection: $waterCondition) {
@@ -218,7 +212,6 @@ struct NewFishView: View {
                             lengthExpanded = false
                         }
                     }
-                    
                 }
                 
                 Button {
@@ -230,9 +223,43 @@ struct NewFishView: View {
                     }
                     
                 }
+                .onTapGesture {
+                    withAnimation {
+                        weightExpanded = false
+                        lengthExpanded = false
+                    }
+                }
+                
+                Section {
+                    Button { clearForm() } label: {
+                        HStack {
+                            Spacer()
+                            Text("Create")
+                            Spacer()
+                        }
+                        
+                    }
+                }
             }
             .navigationTitle("New Fish")
+            .toolbar {
+                Button { clearForm() } label: { Text("Clear") }
+            }
         }
+    }
+    
+    func clearForm() {
+        isInputActive = false
+        species = ""
+        lengthWhole = nil
+        lengthDecimal = nil
+        weightWhole = nil
+        weightDecimal = nil
+        bait = ""
+        waterCondition = nil
+        locationName = ""
+        lengthExpanded = false
+        weightExpanded = false
     }
 }
 
