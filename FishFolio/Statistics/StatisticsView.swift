@@ -10,33 +10,97 @@ import SwiftUI
 
 struct TestData: Identifiable {
     var id = UUID()
-    var month: String
+    var date: Date
     var totalCaught: Int
 }
 
 struct StatisticsView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let data = [
-        TestData(month: "June", totalCaught: 3),
-        TestData(month: "July", totalCaught: 13),
-        TestData(month: "August", totalCaught: 5)
+        TestData(date: Calendar.current.date(byAdding: .month, value: 1, to: .now)!, totalCaught: 3),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 2, to: .now)!, totalCaught: 13),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 3, to: .now)!, totalCaught: 31),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 4, to: .now)!, totalCaught: 23),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 5, to: .now)!, totalCaught: 55),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 6, to: .now)!, totalCaught: 0),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 7, to: .now)!, totalCaught: 51),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 8, to: .now)!, totalCaught: 15)
     ]
     
     var body: some View {
-        VStack {
-            Chart {
-                ForEach(data) { shape in
-                    BarMark(
-                        x: .value("Shape Type", shape.month),
-                        y: .value("Total Count", shape.totalCaught)
-                    )
+        NavigationView {
+            Form {
+                GroupBox {
+                    Chart {
+                        ForEach(data) { shape in
+                            BarMark(
+                                x: .value("Shape Type", shape.date, unit: .month),
+                                y: .value("Total Count", shape.totalCaught)
+                            )
+                            .foregroundStyle(.orange)
+                            .annotation(position: .top, alignment: .top, spacing: 3) {
+                                Text(shape.totalCaught, format: .number)
+                                    .font(.footnote)
+                            }
+                        }
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .month)) { _ in
+                            AxisValueLabel(format: .dateTime.month(), centered: true)
+                        }
+                    }
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("Total Caught")
+                        Text("132")
+                            .font(.headline)
+                            .foregroundColor(.orange)
+                    }
+                }
+                .backgroundStyle(colorScheme == .light ? .white : .clear)
+                .listRowInsets(EdgeInsets())
+                .navigationTitle("Statistics")
+//                .frame(maxHeight: 400)
+                
+                Section("More Stats") {
+                    HStack {
+                        Text("Largest Fish")
+                        Spacer()
+                        Text(Measurement(value: 56, unit: UnitLength.inches), format: .measurement(width: .abbreviated))
+                            .foregroundColor(.orange)
+                    }
+                    HStack {
+                        Text("Heaviest Fish")
+                        Spacer()
+                        Text(Measurement(value: 34, unit: UnitMass.pounds), format: .measurement(width: .abbreviated))
+                            .foregroundColor(.orange)
+                    }
+                    
+                }
+                Section("Most Frequent") {
+                    HStack {
+                        Text("Species")
+                        Spacer()
+                        Text("Trout")
+                            .foregroundColor(.orange)
+                    }
+                    HStack {
+                        Text("Bait")
+                        Spacer()
+                        Text("Eggs")
+                            .foregroundColor(.orange)
+                    }
+                    HStack {
+                        Text("Location")
+                        Spacer()
+                        Text("Klineline")
+                            .foregroundColor(.orange)
+                    }
                 }
             }
-            .chartXAxisLabel("Month")
-            .chartYAxisLabel("Caught")
-            .padding()
         }
-        .frame(maxHeight: 300)
     }
 }
 
