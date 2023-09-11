@@ -62,7 +62,6 @@ struct StatisticsView: View {
                 .backgroundStyle(colorScheme == .light ? .white : .clear)
                 .listRowInsets(EdgeInsets())
                 .navigationTitle("Statistics")
-//                .frame(maxHeight: 400)
                 
                 Section("More Stats") {
                     HStack {
