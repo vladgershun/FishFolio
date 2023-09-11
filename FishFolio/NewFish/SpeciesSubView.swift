@@ -51,7 +51,7 @@ struct SpeciesSubView: View {
         }
         .alert("Add Species", isPresented: $newSpeciesShowing) {
             TextField("", text: $newSpecies)
-            Button("Add"){ addSpecies(newSpecies) }
+            Button("Add") { addSpecies(newSpecies) }
             Button("Cancel", role: .cancel) { newSpecies = "" }
         }
     }

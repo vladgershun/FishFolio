@@ -246,6 +246,7 @@ struct NewFishView: View {
                 Button { clearForm() } label: { Text("Clear") }
             }
         }
+        .navigationViewStyle(.stack)
     }
     
     func clearForm() {

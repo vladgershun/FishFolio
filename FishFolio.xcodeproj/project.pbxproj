@@ -22,6 +22,9 @@
 		F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BAD2AA7B1D500EBCDAA /* TabBarContainerView.swift */; };
 		F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BAF2AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift */; };
 		F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C6BB12AA7CA2B00EBCDAA /* TabBarBackground.swift */; };
+		F5A3FAF12AAEB900009BF109 /* AllFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF02AAEB900009BF109 /* AllFishView.swift */; };
+		F5A3FAF52AAFA0D7009BF109 /* FishRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */; };
+		F5A3FAF72AAFA248009BF109 /* FishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +46,9 @@
 		F56C6BAD2AA7B1D500EBCDAA /* TabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerView.swift; sourceTree = "<group>"; };
 		F56C6BAF2AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemPreferenceKey.swift; sourceTree = "<group>"; };
 		F56C6BB12AA7CA2B00EBCDAA /* TabBarBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBackground.swift; sourceTree = "<group>"; };
+		F5A3FAF02AAEB900009BF109 /* AllFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFishView.swift; sourceTree = "<group>"; };
+		F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishRowView.swift; sourceTree = "<group>"; };
+		F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishDetailView.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +114,7 @@
 			children = (
 				F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */,
 				F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */,
+				F5A3FAEE2AAEB8D6009BF109 /* AllFish */,
 				F52AC9F72AA86B8B007114EC /* NewFish */,
 				F51DE0462AA95553000E744D /* Statistics */,
 				F52AC9F42AA85792007114EC /* Settings */,
@@ -136,6 +143,16 @@
 				F56C6BB12AA7CA2B00EBCDAA /* TabBarBackground.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		F5A3FAEE2AAEB8D6009BF109 /* AllFish */ = {
+			isa = PBXGroup;
+			children = (
+				F5A3FAF02AAEB900009BF109 /* AllFishView.swift */,
+				F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */,
+				F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */,
+			);
+			path = AllFish;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,14 +232,17 @@
 				F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */,
 				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
 				F52ACA002AA9083D007114EC /* BaitSubView.swift in Sources */,
+				F5A3FAF72AAFA248009BF109 /* FishDetailView.swift in Sources */,
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,
 				F56C6BAC2AA7AB6200EBCDAA /* TabBarView.swift in Sources */,
 				F52ACA0A2AA948A2007114EC /* WaterConditionSubView.swift in Sources */,
+				F5A3FAF12AAEB900009BF109 /* AllFishView.swift in Sources */,
 				F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */,
 				F51DE0482AA95570000E744D /* StatisticsView.swift in Sources */,
 				F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */,
 				F52AC9FA2AA86BBA007114EC /* NewFishEnums.swift in Sources */,
 				F56C6B9B2AA7A63F00EBCDAA /* FishFolioApp.swift in Sources */,
+				F5A3FAF52AAFA0D7009BF109 /* FishRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

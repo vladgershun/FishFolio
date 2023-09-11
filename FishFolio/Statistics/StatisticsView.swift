@@ -61,7 +61,7 @@ struct StatisticsView: View {
                 }
                 .backgroundStyle(colorScheme == .light ? .white : .clear)
                 .listRowInsets(EdgeInsets())
-                .navigationTitle("Statistics")
+                
                 
                 Section("More Stats") {
                     HStack {
@@ -99,7 +99,9 @@ struct StatisticsView: View {
                     }
                 }
             }
+            .navigationTitle("Statistics")
         }
+        .navigationViewStyle(.stack)
     }
 }
 

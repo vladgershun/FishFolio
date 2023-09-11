@@ -10,19 +10,35 @@ import SwiftUI
 struct MainView: View {
     
     @State private var tabSelection: TabBarItem = .fish
-
+    
     var body: some View {
-        TabBarContainerView(selection: $tabSelection) {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(.blue)
-                .frame(width: 200, height: 100)
-                .tabBarItem(tab: .fish, selection: $tabSelection)
+        //        TabBarContainerView(selection: $tabSelection) {
+        //            AllFishView()
+        //                .tabBarItem(tab: .fish, selection: $tabSelection)
+        //            NewFishView()
+        //                .tabBarItem(tab: .new, selection: $tabSelection)
+        //            StatisticsView()
+        //                .tabBarItem(tab: .statistics, selection: $tabSelection)
+        //            SettingsView()
+        //                .tabBarItem(tab: .settings, selection: $tabSelection)
+        //        }
+        TabView {
+            AllFishView()
+                .tabItem {
+                    Label(TabBarItem.fish.title, systemImage: TabBarItem.fish.iconName)
+                }
             NewFishView()
-                .tabBarItem(tab: .new, selection: $tabSelection)
+                .tabItem {
+                    Label(TabBarItem.new.title, systemImage: TabBarItem.new.iconName)
+                }
             StatisticsView()
-                .tabBarItem(tab: .statistics, selection: $tabSelection)
+                .tabItem {
+                    Label(TabBarItem.statistics.title, systemImage: TabBarItem.statistics.iconName)
+                }
             SettingsView()
-                .tabBarItem(tab: .settings, selection: $tabSelection)
+                .tabItem {
+                    Label(TabBarItem.settings.title, systemImage: TabBarItem.settings.iconName)
+                }
         }
     }
 }
