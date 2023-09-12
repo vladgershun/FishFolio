@@ -11,8 +11,7 @@ import SwiftUI
 struct FishDetailView: View {
     
     var fish: UIFish
-    
-    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    @StateObject private var vm: DetailVM = .init()
     
     var body: some View {
         Form {
@@ -78,7 +77,7 @@ struct FishDetailView: View {
  
             Section {
                 Map(coordinateRegion: .constant(MKCoordinateRegion(center: fish.coordinates,
-                                                                   span: mapSpan)),
+                                                                   span: vm.mapSpan)),
                     annotationItems: [fish]) { fish in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: fish.coordinates.latitude, longitude: fish.coordinates.longitude)) {
                         MapAnnotationView()
@@ -93,7 +92,9 @@ struct FishDetailView: View {
             
             HStack {
                 Spacer()
-                Button(role: .destructive) { } label: {
+                Button(role: .destructive) {
+                    vm.deleteFish(fish)
+                } label: {
                     HStack {
                         Image(systemName: "trash")
                         Text("Delete Fish")
@@ -104,7 +105,11 @@ struct FishDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button { } label: { Image(systemName: "square.and.pencil") }
+            Button {
+                vm.editFish(fish)
+            } label: {
+                Image(systemName: "square.and.pencil")
+            }
         }
     }
 }

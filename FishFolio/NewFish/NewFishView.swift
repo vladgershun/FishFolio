@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewFishView: View {
     
+    @StateObject private var vm: NewFishVM = .init()
+    
     @FocusState var isInputActive: Bool
     
     @State private var species: String = ""
