@@ -218,8 +218,10 @@ struct NewFishView: View {
                     // Add later
                 } label: {
                     HStack {
+                        Spacer()
                         Image(systemName: "camera")
                         Text("Add Image")
+                        Spacer()
                     }
                     
                 }
