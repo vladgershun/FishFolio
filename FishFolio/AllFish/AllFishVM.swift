@@ -6,51 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
-import MapKit
-import Combine
-
-protocol FetchService {
-    func fetchAllFish() -> [UIFish]
-}
-
-struct StubFetchService: FetchService {
-    
-    var demoUIFish = [UIFish(id: UUID(),
-                            species: "Salmon",
-                            bait: "Eggs",
-                            length: Measurement(value: 32, unit: .inches),
-                            weight: Measurement(value: 12, unit: .pounds),
-                            timeCaught: .now,
-                            temperature: Measurement(value: 76, unit: .fahrenheit),
-                            waterCondition: .muddy,
-                            coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
-                            locationName: "Klineline",
-                            image: Image("Salmon"))]
-    
-    func fetchAllFish() -> [UIFish] {
-        return demoUIFish
-    }
-}
-
-class DBFetchService: FetchService {
-    
-    let demoUIFish = UIFish(id: UUID(),
-                            species: "Salmon",
-                            bait: "Eggs",
-                            length: Measurement(value: 32, unit: .inches),
-                            weight: Measurement(value: 12, unit: .pounds),
-                            timeCaught: .now,
-                            temperature: Measurement(value: 76, unit: .fahrenheit),
-                            waterCondition: .muddy,
-                            coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
-                            locationName: "Klineline",
-                            image: Image("Salmon"))
-    
-    func fetchAllFish() -> [UIFish] {
-        return [demoUIFish]
-    }
-}
 
 @MainActor
 class AllFishVM: ObservableObject {
@@ -65,9 +20,4 @@ class AllFishVM: ObservableObject {
     func task() async {
         self.allFish = fetchService.fetchAllFish()
     }
-//    func task() -> Future<Void, Never> {
-//        Future {
-//            self.allFish = fetchService.fetchAllFish()
-//        }
-//    }
 }

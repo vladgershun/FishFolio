@@ -40,7 +40,7 @@ final class AllFishTests: XCTestCase {
     }
     
     func testAllFishTaskRun() async {
-        let vm = AllFishVM(fetchService: StubFetchService(demoUIFish: Self.stubFish))
+        let vm = AllFishVM(fetchService: StubFetchService())
         let task = Task {
             //
             await vm.task()
