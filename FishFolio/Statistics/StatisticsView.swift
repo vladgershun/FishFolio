@@ -18,6 +18,8 @@ struct StatisticsView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    @AppStorage("weightUnits") private var weightUnits: WeightUnits = .pounds
+    
     let data = [
         TestData(date: Calendar.current.date(byAdding: .month, value: 1, to: .now)!, totalCaught: 3),
         TestData(date: Calendar.current.date(byAdding: .month, value: 2, to: .now)!, totalCaught: 13),
@@ -75,9 +77,11 @@ struct StatisticsView: View {
                             .foregroundColor(.orange)
                     }
                     HStack {
-                        Text("Heaviest Fish")
+                        Text("Heaviest Fish (\(self.weightUnits.rawValue))")
                         Spacer()
-                        Text(Measurement(value: 34, unit: UnitMass.pounds), format: .measurement(width: .abbreviated))
+//                        Text(Measurement(value: 34, unit: UnitMass.pounds).converted(to: self.weightUnits.unit).formatted(.measurement(width: .abbreviated, usage: .asProvided)))
+//                        Text(Measurement(value: 34, unit: UnitMass.pounds).converted(to: self.weightUnits.unit), format: .measurement(width: .abbreviated, usage: .asProvided))
+                        Text(Measurement(value: 34, unit: UnitMass.pounds), format: .customMeasurement(unit: weightUnits))
                             .foregroundColor(.orange)
                     }
                     
@@ -106,6 +110,36 @@ struct StatisticsView: View {
             .navigationTitle("Statistics")
         }
         .navigationViewStyle(.stack)
+    }
+}
+
+struct CustomMeasurmentFormat<U: UnitConvertible>: FormatStyle {
+    var base: Measurement<U.U>.FormatStyle
+    var unit: U
+    
+    func format(_ value: Measurement<U.U>) -> String {
+        value.converted(to: unit.unit).formatted(base)
+    }
+}
+extension FormatStyle {
+    static func customMeasurement<U: UnitConvertible>(unit: U) -> CustomMeasurmentFormat<U> where Self == CustomMeasurmentFormat<U> {
+        CustomMeasurmentFormat(base: .init(width: .abbreviated, locale: .current, usage: .asProvided, numberFormatStyle: .number), unit: unit)
+    }
+}
+protocol UnitConvertible: Codable, Hashable {
+    associatedtype U: Dimension
+    
+    var unit: U { get }
+}
+
+extension WeightUnits: UnitConvertible {
+    var unit: UnitMass {
+        switch self {
+        case .pounds:
+            return .pounds
+        case .kilograms:
+            return .kilograms
+        }
     }
 }
 
