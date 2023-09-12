@@ -17,27 +17,18 @@ struct DemoFish: Identifiable {
 
 struct AllFishView: View {
     
-    var testFish = TestFish(species: "Salmon", location: "Klineline", image: true, date: .now, bait: "Worm", weight: "5.4", length: "42", waterCondition: "Muddy")
+    @StateObject private var vm: AllFishVM = .init()
     
-    var demoFish = [
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: false, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: false, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-        DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
-    ]
+    var testFish = TestFish(species: "Salmon", location: "Klineline", image: true, date: .now, bait: "Worm", weight: "5.4", length: "42", waterCondition: "Muddy")
     
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach(demoFish) { fish in
+                ForEach(vm.allFish) { fish in
                     NavigationLink {
                         FishDetailView(fish: testFish)
                     } label: {
-                        FishRowView(fish: fish)
+                        FishRowView(fish: DemoFish(species: fish.species, location: fish.locationName, image: false, date: fish.timeCaught))
                     }
                 }
                 .onDelete(perform: testDelete)
@@ -45,7 +36,11 @@ struct AllFishView: View {
             }
             .navigationBarTitle("Fish")
         }
+        .task {
+            await vm.task()
+        }
     }
+        
     
     func testDelete(at offsets: IndexSet) { }
 }
