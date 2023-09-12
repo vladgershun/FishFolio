@@ -12,6 +12,8 @@ struct FishDetailView: View {
     
     var fish: UIFish
     
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    
     var body: some View {
         Form {
             Section {
@@ -29,24 +31,14 @@ struct FishDetailView: View {
                     Text(fish.species)
                         .foregroundColor(.secondary)
                 }
-                
                 HStack {
                     Text("Bait")
                     Spacer()
                     Text(fish.bait)
                         .foregroundColor(.secondary)
                 }
-                
-                LabeledContent("Length", value: Measurement(value: 32, unit: UnitLength.inches), format: .measurement(width: .wide))
-                
-                LabeledContent("Weight", value: Measurement(value: 32, unit: UnitMass.pounds), format: .measurement(width: .wide))
-                
-                HStack {
-                    Text("Water Condition")
-                    Spacer()
-                    Text(fish.waterCondition.description)
-                        .foregroundColor(.secondary)
-                }
+                LabeledContent("Length", value: fish.length, format: .measurement(width: .abbreviated))
+                LabeledContent("Weight", value: fish.weight, format: .measurement(width: .abbreviated))
             }
             
             Section("Location") {
@@ -57,7 +49,7 @@ struct FishDetailView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                LabeledContent("Temperature", value: Measurement(value: 76, unit: UnitTemperature.fahrenheit), format: .measurement(width: .abbreviated))
+                LabeledContent("Temperature", value: fish.temperature, format: .measurement(width: .abbreviated))
                 
                 HStack {
                     Text("Water Condition")
@@ -72,21 +64,21 @@ struct FishDetailView: View {
                 HStack {
                     Text("Latitude")
                     Spacer()
-                    Text("45.707115")
+                    Text(fish.coordinates.latitude, format: .number)
                         .foregroundColor(.secondary)
                 }
                 
                 HStack {
                     Text("Longitude")
                     Spacer()
-                    Text("-122.656846")
+                    Text(fish.coordinates.longitude, format: .number)
                         .foregroundColor(.secondary)
                 }
             }
  
             Section {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
-                                                                   span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))),
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: fish.coordinates,
+                                                                   span: mapSpan)),
                     annotationItems: [fish]) { fish in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: fish.coordinates.latitude, longitude: fish.coordinates.longitude)) {
                         MapAnnotationView()
@@ -106,7 +98,6 @@ struct FishDetailView: View {
                         Image(systemName: "trash")
                         Text("Delete Fish")
                     }
-                    
                 }
                 Spacer()
             }

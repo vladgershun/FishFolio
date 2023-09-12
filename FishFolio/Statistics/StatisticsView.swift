@@ -77,7 +77,7 @@ struct StatisticsView: View {
                             .foregroundColor(.orange)
                     }
                     HStack {
-                        Text("Heaviest Fish (\(self.weightUnits.rawValue))")
+                        Text("Heaviest Fish")
                         Spacer()
 //                        Text(Measurement(value: 34, unit: UnitMass.pounds).converted(to: self.weightUnits.unit).formatted(.measurement(width: .abbreviated, usage: .asProvided)))
 //                        Text(Measurement(value: 34, unit: UnitMass.pounds).converted(to: self.weightUnits.unit), format: .measurement(width: .abbreviated, usage: .asProvided))

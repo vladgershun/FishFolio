@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-struct DemoFish: Identifiable {
-    let id = UUID()
-    var species: String
-    var location: String
-    var image: Bool
-    var date: Date
-}
-
 struct AllFishView: View {
     
     @StateObject private var vm: AllFishVM = .init()
@@ -38,8 +30,7 @@ struct AllFishView: View {
             await vm.task()
         }
     }
-        
-    
+
     func testDelete(at offsets: IndexSet) { }
 }
 
