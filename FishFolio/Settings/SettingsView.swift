@@ -38,48 +38,30 @@ struct SettingsView: View {
                     }
                     
                     Section("Units") {
-                        VStack {
-                            HStack {
-                                Text("Weight")
-                                Spacer()
-                                Picker("Weight", selection: $weightUnits) {
-                                    ForEach(WeightUnits.allCases) { weight in
-                                        Text(weight.description)
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                                .frame(maxWidth: geo.size.width / 2)
-                                .pickerStyle(.segmented)
+                        Picker("Weight", selection: $weightUnits) {
+                            ForEach(WeightUnits.allCases) { weight in
+                                Text(weight.description)
                             }
-                            
-                            HStack {
-                                Text("Length")
-                                Spacer()
-                                Picker("Length", selection: $lengthUnits) {
-                                    ForEach(LengthUnits.allCases) { length in
-                                        Text(length.description)
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                                .frame(maxWidth: geo.size.width / 2)
-                                .pickerStyle(.segmented)
+                        }
+                        .pickerStyle(.menu)
+                        
+                        Picker("Length", selection: $lengthUnits) {
+                            ForEach(LengthUnits.allCases) { length in
+                                Text(length.description)
                             }
-                            
-                            HStack {
-                                Text("Temperature")
-                                Spacer()
-                                Picker("Temperature", selection: $temperatureUnits) {
-                                    ForEach(TemperatureUnits.allCases) { temperature in
-                                        Text(temperature.description)
-                                    }
-                                }
-                                .padding(.vertical, 5)
-                                .frame(maxWidth: geo.size.width / 2)
-                                .pickerStyle(.segmented)
+                        }
+                        .pickerStyle(.menu)
+                        
+                        
+                        Picker("Temperature", selection: $temperatureUnits) {
+                            ForEach(TemperatureUnits.allCases) { temperature in
+                                Text(temperature.description)
                             }
                         }
                         
+                        .pickerStyle(.menu)
                     }
+                    .tint(.secondary)
                     
                     Section {
                         Button("Delete Species Data", role: .destructive) { speciesPresented = true }

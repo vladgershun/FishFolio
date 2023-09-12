@@ -26,7 +26,11 @@ struct StatisticsView: View {
         TestData(date: Calendar.current.date(byAdding: .month, value: 5, to: .now)!, totalCaught: 55),
         TestData(date: Calendar.current.date(byAdding: .month, value: 6, to: .now)!, totalCaught: 0),
         TestData(date: Calendar.current.date(byAdding: .month, value: 7, to: .now)!, totalCaught: 51),
-        TestData(date: Calendar.current.date(byAdding: .month, value: 8, to: .now)!, totalCaught: 15)
+        TestData(date: Calendar.current.date(byAdding: .month, value: 8, to: .now)!, totalCaught: 15),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 9, to: .now)!, totalCaught: 55),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 10, to: .now)!, totalCaught: 0),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 11, to: .now)!, totalCaught: 51),
+        TestData(date: Calendar.current.date(byAdding: .month, value: 12, to: .now)!, totalCaught: 15)
     ]
     
     var body: some View {

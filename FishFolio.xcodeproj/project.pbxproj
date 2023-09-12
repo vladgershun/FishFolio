@@ -26,6 +26,7 @@
 		F5A3FAF52AAFA0D7009BF109 /* FishRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */; };
 		F5A3FAF72AAFA248009BF109 /* FishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */; };
 		F5A3FAF92AAFEF37009BF109 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */; };
+		F5A3FAFD2AB012D0009BF109 /* FishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAFC2AB012D0009BF109 /* FishModel.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishRowView.swift; sourceTree = "<group>"; };
 		F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishDetailView.swift; sourceTree = "<group>"; };
 		F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
+		F5A3FAFC2AB012D0009BF109 /* FishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishModel.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 				F52AC9F72AA86B8B007114EC /* NewFish */,
 				F51DE0462AA95553000E744D /* Statistics */,
 				F52AC9F42AA85792007114EC /* Settings */,
+				F5A3FAFA2AB00622009BF109 /* Models */,
 				F56C6BA82AA7A86E00EBCDAA /* TabBar */,
 				F56C6B9E2AA7A64000EBCDAA /* Assets.xcassets */,
 				F56C6BA02AA7A64000EBCDAA /* Preview Content */,
@@ -156,6 +159,14 @@
 				F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */,
 			);
 			path = AllFish;
+			sourceTree = "<group>";
+		};
+		F5A3FAFA2AB00622009BF109 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F5A3FAFC2AB012D0009BF109 /* FishModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				F52ACA0A2AA948A2007114EC /* WaterConditionSubView.swift in Sources */,
 				F5A3FAF12AAEB900009BF109 /* AllFishView.swift in Sources */,
 				F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */,
+				F5A3FAFD2AB012D0009BF109 /* FishModel.swift in Sources */,
 				F51DE0482AA95570000E744D /* StatisticsView.swift in Sources */,
 				F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */,
 				F52AC9FA2AA86BBA007114EC /* NewFishEnums.swift in Sources */,
