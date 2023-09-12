@@ -23,6 +23,6 @@ struct UIFish: Identifiable {
     var waterCondition: WaterCondition
     var coordinates: CLLocationCoordinate2D
     var locationName: String
-    var image: Image
+    var image: Image?
 }
 

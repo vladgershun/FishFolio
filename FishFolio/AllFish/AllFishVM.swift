@@ -8,14 +8,15 @@
 import Foundation
 import SwiftUI
 import MapKit
+import Combine
 
 protocol FetchService {
     func fetchAllFish() -> [UIFish]
 }
 
-class StubFetchService: FetchService {
+struct StubFetchService: FetchService {
     
-    let demoUIFish = UIFish(id: UUID(),
+    var demoUIFish = [UIFish(id: UUID(),
                             species: "Salmon",
                             bait: "Eggs",
                             length: Measurement(value: 32, unit: .inches),
@@ -25,10 +26,10 @@ class StubFetchService: FetchService {
                             waterCondition: .muddy,
                             coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
                             locationName: "Klineline",
-                            image: Image("Salmon"))
+                            image: Image("Salmon"))]
     
     func fetchAllFish() -> [UIFish] {
-        return [demoUIFish]
+        return demoUIFish
     }
 }
 
@@ -64,4 +65,9 @@ class AllFishVM: ObservableObject {
     func task() async {
         self.allFish = fetchService.fetchAllFish()
     }
+//    func task() -> Future<Void, Never> {
+//        Future {
+//            self.allFish = fetchService.fetchAllFish()
+//        }
+//    }
 }

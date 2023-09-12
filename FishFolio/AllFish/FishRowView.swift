@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct FishRowView: View {
     
-    var fish: DemoFish
-    
+    var fish: UIFish
     
     var body: some View {
         HStack {
@@ -24,14 +24,14 @@ struct FishRowView: View {
                 
                 HStack {
                     Image(systemName: "globe")
-                    Text(fish.location)
+                    Text(fish.locationName)
                 }
                 .foregroundColor(.secondary)
                 .font(.subheadline)
                 
                 HStack {
                     Image(systemName: "calendar")
-                    Text(fish.date, format: Date.FormatStyle().month(.abbreviated).day().year())
+                    Text(fish.timeCaught, format: Date.FormatStyle().month(.abbreviated).day().year())
                         
                 }
                 .foregroundColor(.secondary)
@@ -41,8 +41,8 @@ struct FishRowView: View {
             
             Spacer()
             
-            if fish.image {
-                Image("Salmon")
+            if let image = fish.image {
+                image
                     .resizable()
                     .scaledToFill()
                     .cornerRadius(10)
@@ -68,7 +68,6 @@ struct FishRowView: View {
             }
         }
         .padding()
-        
         .background (
             RoundedRectangle(cornerRadius: 10)
                 .fill(Material.thickMaterial)
@@ -82,7 +81,17 @@ struct FishRowView: View {
 
 struct FishRowView_Previews: PreviewProvider {
     static var previews: some View {
-        FishRowView(fish: DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now))
+        FishRowView(fish: UIFish(id: UUID(),
+                                 species: "Salmon",
+                                 bait: "Eggs",
+                                 length: Measurement(value: 32, unit: .inches),
+                                 weight: Measurement(value: 12, unit: .pounds),
+                                 timeCaught: .now,
+                                 temperature: Measurement(value: 76, unit: .fahrenheit),
+                                 waterCondition: .muddy,
+                                 coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
+                                 locationName: "Klineline",
+                                 image: Image("Salmon")))
             .frame(maxHeight: 100)
     }
 }

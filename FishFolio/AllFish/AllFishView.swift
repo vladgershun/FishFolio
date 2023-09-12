@@ -18,17 +18,15 @@ struct DemoFish: Identifiable {
 struct AllFishView: View {
     
     @StateObject private var vm: AllFishVM = .init()
-    
-    var testFish = TestFish(species: "Salmon", location: "Klineline", image: true, date: .now, bait: "Worm", weight: "5.4", length: "42", waterCondition: "Muddy")
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
                 ForEach(vm.allFish) { fish in
                     NavigationLink {
-                        FishDetailView(fish: testFish)
+                        FishDetailView(fish: fish)
                     } label: {
-                        FishRowView(fish: DemoFish(species: fish.species, location: fish.locationName, image: false, date: fish.timeCaught))
+                        FishRowView(fish: fish)
                     }
                 }
                 .onDelete(perform: testDelete)

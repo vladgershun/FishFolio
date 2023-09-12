@@ -8,29 +8,14 @@
 import MapKit
 import SwiftUI
 
-struct TestFish: Identifiable {
-    let id = UUID()
-    var species: String
-    var location: String
-    var image: Bool
-    var date: Date
-    var bait: String
-    var weight: String
-    var length: String
-    var waterCondition: String
-    var lat = 45.707115
-    var long = -122.656846
-}
-
-
 struct FishDetailView: View {
     
-    var fish: TestFish
+    var fish: UIFish
     
     var body: some View {
         Form {
             Section {
-                Image("Salmon")
+                fish.image?
                     .resizable()
                     .cornerRadius(10)
                     .scaledToFit()
@@ -59,7 +44,7 @@ struct FishDetailView: View {
                 HStack {
                     Text("Water Condition")
                     Spacer()
-                    Text(fish.waterCondition)
+                    Text(fish.waterCondition.description)
                         .foregroundColor(.secondary)
                 }
             }
@@ -68,7 +53,7 @@ struct FishDetailView: View {
                 HStack {
                     Text("Name")
                     Spacer()
-                    Text(fish.location)
+                    Text(fish.locationName)
                         .foregroundColor(.secondary)
                 }
                 
@@ -77,12 +62,12 @@ struct FishDetailView: View {
                 HStack {
                     Text("Water Condition")
                     Spacer()
-                    Text(fish.waterCondition)
+                    Text(fish.waterCondition.description)
                         .foregroundColor(.secondary)
                 }
                 
-                LabeledContent("Date", value: fish.date, format: Date.FormatStyle().day().month().year())
-                LabeledContent("Time", value: fish.date, format: Date.FormatStyle().hour().minute())
+                LabeledContent("Date", value: fish.timeCaught, format: Date.FormatStyle().day().month().year())
+                LabeledContent("Time", value: fish.timeCaught, format: Date.FormatStyle().hour().minute())
                
                 HStack {
                     Text("Latitude")
@@ -100,13 +85,10 @@ struct FishDetailView: View {
             }
  
             Section {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 45.707115,
-                                                                                                  longitude: -122.656846),
-                                                                   span: MKCoordinateSpan(latitudeDelta: 0.001,
-                                                                                          longitudeDelta: 0.001))),
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
+                                                                   span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))),
                     annotationItems: [fish]) { fish in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: fish.lat,
-                                                                     longitude: fish.long)) {
+                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: fish.coordinates.latitude, longitude: fish.coordinates.longitude)) {
                         MapAnnotationView()
                             .shadow(radius: 10)
                     }
@@ -129,7 +111,6 @@ struct FishDetailView: View {
                 Spacer()
             }
         }
-        .navigationTitle(fish.species)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button { } label: { Image(systemName: "square.and.pencil") }
@@ -139,6 +120,16 @@ struct FishDetailView: View {
 
 struct FishDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FishDetailView(fish: TestFish(species: "Salmon", location: "Klineline", image: true, date: .now, bait: "Worm", weight: "5.4", length: "42", waterCondition: "Muddy"))
+        FishDetailView(fish: UIFish(id: UUID(),
+                                    species: "Salmon",
+                                    bait: "Eggs",
+                                    length: Measurement(value: 32, unit: .inches),
+                                    weight: Measurement(value: 12, unit: .pounds),
+                                    timeCaught: .now,
+                                    temperature: Measurement(value: 76, unit: .fahrenheit),
+                                    waterCondition: .muddy,
+                                    coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
+                                    locationName: "Klineline",
+                                    image: Image("Salmon")))
     }
 }

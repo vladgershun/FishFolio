@@ -27,7 +27,7 @@
 		F5A3FAF72AAFA248009BF109 /* FishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */; };
 		F5A3FAF92AAFEF37009BF109 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */; };
 		F5A3FAFD2AB012D0009BF109 /* UIFishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAFC2AB012D0009BF109 /* UIFishModel.swift */; };
-		F5A3FB052AB01D16009BF109 /* FishFolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB042AB01D16009BF109 /* FishFolioTests.swift */; };
+		F5A3FB052AB01D16009BF109 /* AllFishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB042AB01D16009BF109 /* AllFishTests.swift */; };
 		F5A3FB0E2AB02BAA009BF109 /* AllFishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB0D2AB02BAA009BF109 /* AllFishVM.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
@@ -66,7 +66,7 @@
 		F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
 		F5A3FAFC2AB012D0009BF109 /* UIFishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFishModel.swift; sourceTree = "<group>"; };
 		F5A3FB022AB01D16009BF109 /* FishFolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishFolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5A3FB042AB01D16009BF109 /* FishFolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishFolioTests.swift; sourceTree = "<group>"; };
+		F5A3FB042AB01D16009BF109 /* AllFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFishTests.swift; sourceTree = "<group>"; };
 		F5A3FB0D2AB02BAA009BF109 /* AllFishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFishVM.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		F5A3FB032AB01D16009BF109 /* FishFolioTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5A3FB042AB01D16009BF109 /* FishFolioTests.swift */,
+				F5A3FB042AB01D16009BF109 /* AllFishTests.swift */,
 			);
 			path = FishFolioTests;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5A3FB052AB01D16009BF109 /* FishFolioTests.swift in Sources */,
+				F5A3FB052AB01D16009BF109 /* AllFishTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
