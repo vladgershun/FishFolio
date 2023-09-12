@@ -83,6 +83,13 @@ struct FishDetailView: View {
                 }
                 
                 HStack {
+                    Text("Temperature")
+                    Spacer()
+                    Text("76°F")
+                        .foregroundColor(.secondary)
+                }
+                
+                HStack {
                     Text("Water Condition")
                     Spacer()
                     Text(fish.waterCondition)
@@ -103,6 +110,19 @@ struct FishDetailView: View {
                         .foregroundColor(.secondary)
                 }
                 
+                HStack {
+                    Text("Latitude")
+                    Spacer()
+                    Text("45.707115")
+                        .foregroundColor(.secondary)
+                }
+                
+                HStack {
+                    Text("Longitude")
+                    Spacer()
+                    Text("-122.656846")
+                        .foregroundColor(.secondary)
+                }
                 
                 
             }

@@ -70,10 +70,11 @@ struct SpeciesSubView: View {
     }
     
     func addSpecies(_ species: String) {
-        if !species.isEmpty {
+        if !species.isEmpty && !allSpecies.contains(species) {
             allSpecies.append(species)
             newSpecies = ""
         }
+        newSpecies = ""
     }
 }
 

@@ -71,10 +71,11 @@ struct BaitSubView: View {
     }
     
     func addBait(_ bait: String) {
-        if !bait.isEmpty {
+        if !bait.isEmpty && !baits.contains(bait) {
             baits.append(bait)
             newBait = ""
         }
+        newBait = ""
     }
 }
 
