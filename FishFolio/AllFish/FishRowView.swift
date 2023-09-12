@@ -11,6 +11,7 @@ struct FishRowView: View {
     
     var fish: DemoFish
     
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -69,7 +70,7 @@ struct FishRowView: View {
         .padding()
         
         .background (
-            RoundedRectangle(cornerRadius: 15)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(Material.thickMaterial)
                 .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 3)
             

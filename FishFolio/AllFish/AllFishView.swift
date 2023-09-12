@@ -17,6 +17,8 @@ struct DemoFish: Identifiable {
 
 struct AllFishView: View {
     
+    var testFish = TestFish(species: "Salmon", location: "Klineline", image: true, date: .now, bait: "Worm", weight: "5.4", length: "42", waterCondition: "Muddy")
+    
     var demoFish = [
         DemoFish(species: "Salmon", location: "Lewis River", image: true, date: .now),
         DemoFish(species: "Salmon", location: "Lewis River", image: false, date: .now),
@@ -33,7 +35,7 @@ struct AllFishView: View {
             ScrollView {
                 ForEach(demoFish) { fish in
                     NavigationLink {
-                        FishDetailView(fish: fish)
+                        FishDetailView(fish: testFish)
                     } label: {
                         FishRowView(fish: fish)
                     }
