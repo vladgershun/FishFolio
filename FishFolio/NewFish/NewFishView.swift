@@ -34,6 +34,7 @@ struct NewFishView: View {
 
                 Section {
                     createButtonSection
+                        .disabled(vm.newSpecies == "" || vm.newBait == "" || vm.newLocationName == "")
                 }
             }
             .navigationTitle("New Fish")

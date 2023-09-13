@@ -19,13 +19,13 @@ class DetailVM: ObservableObject {
     let mapSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     
     /// Local fields for `EditFishView` form submition.
-    @Published var newSpecies: String = ""
-    @Published var newBait: String = ""
-    @Published var newLength: CustomLength = .init()
-    @Published var newWeight: CustomWeight = .init()
-    @Published var newLocationName: String = ""
-    @Published var newWaterCondition: WaterCondition?
-    @Published var newImage: Image?
+    @Published var updateSpecies: String = ""
+    @Published var updateBait: String = ""
+    @Published var updateLength: CustomLength = .init()
+    @Published var updateWeight: CustomWeight = .init()
+    @Published var updateLocationName: String = ""
+    @Published var updateWaterCondition: WaterCondition?
+    @Published var updateImage: Image?
     
     @Published var speciesList: [String] = []
     @Published var baitsList: [String] = []
@@ -35,16 +35,29 @@ class DetailVM: ObservableObject {
     }
     
     func populateForm(_ fish: UIFish) {
-        newSpecies = fish.species
-        newBait = fish.bait
-        newLength = CustomLength()
-        newWeight = CustomWeight()
-        newLocationName = fish.locationName
-        newWaterCondition = fish.waterCondition
-        newImage = fish.image
+        updateSpecies = fish.species
+        updateBait = fish.bait
+        updateLength = CustomLength()
+        updateWeight = CustomWeight()
+        updateLocationName = fish.locationName
+        updateWaterCondition = fish.waterCondition
+        updateImage = fish.image
     }
     
-    func editFish(_ fish: UIFish) { }
+    func editFish(_ fish: UIFish) {
+        
+        let _ = UIFish(id: fish.id,
+                                 species: updateSpecies,
+                                 bait: updateBait,
+                                 length: updateLength.value,
+                                 weight: updateWeight.value,
+                                 timeCaught: fish.timeCaught,
+                                 temperature: fish.temperature,
+                                 waterCondition: updateWaterCondition,
+                                 coordinates: fish.coordinates,
+                                 locationName: updateLocationName,
+                                 image: updateImage)
+    }
     
     func deleteFish(_ fish: UIFish) {
         crudService.deleteFish(fish)

@@ -47,7 +47,7 @@ struct EditFishView: View {
     
     private var speciesSection: some View {
         NavigationLink {
-            EditSpeciesSubView(vm: vm, species: $vm.newSpecies)
+            EditSpeciesSubView(vm: vm, species: $vm.updateSpecies)
                 .onAppear {
                     withAnimation {
                         weightExpanded = false
@@ -58,7 +58,7 @@ struct EditFishView: View {
             HStack {
                 Text("Species")
                 Spacer()
-                Text(vm.newSpecies)
+                Text(vm.updateSpecies)
                     .foregroundColor(.secondary)
             }
         }
@@ -66,7 +66,7 @@ struct EditFishView: View {
     
     private var baitSection: some View {
         NavigationLink {
-            EditBaitSubView(vm: vm, bait: $vm.newBait)
+            EditBaitSubView(vm: vm, bait: $vm.updateBait)
                 .onAppear {
                     withAnimation {
                         weightExpanded = false
@@ -77,7 +77,7 @@ struct EditFishView: View {
             HStack {
                 Text("Bait")
                 Spacer()
-                Text(vm.newBait)
+                Text(vm.updateBait)
                     .foregroundColor(.secondary)
             }
         }
@@ -86,7 +86,7 @@ struct EditFishView: View {
     private var lengthSection: some View {
         DisclosureGroup(isExpanded: $lengthExpanded) {
             HStack(spacing: 0.0) {
-                Picker("Whole", selection: $vm.newLength.whole) {
+                Picker("Whole", selection: $vm.updateLength.whole) {
                     ForEach(0..<100, id: \.self) { whole in
                         Text(whole, format: .number)
                             .tag(whole as Int?)
@@ -94,15 +94,15 @@ struct EditFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: vm.newLength.whole) { newValue in
+                .onChange(of: vm.updateLength.whole) { newValue in
                     if newValue == 0 {
-                        vm.newLength.whole = nil
+                        vm.updateLength.whole = nil
                     }
                 }
 
                 Text(".")
 
-                Picker("Decimal", selection: $vm.newLength.decimal) {
+                Picker("Decimal", selection: $vm.updateLength.decimal) {
                     ForEach(0..<10, id: \.self) { decimal in
                         Text(decimal, format: .number)
                             .tag(decimal as Int?)
@@ -110,15 +110,15 @@ struct EditFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: vm.newLength.decimal) { newValue in
+                .onChange(of: vm.updateLength.decimal) { newValue in
                     if newValue == 0 {
-                        vm.newLength.decimal = nil
+                        vm.updateLength.decimal = nil
                     }
                 }
             }
         } label: {
             HStack {
-                LabeledContent("Length", value: vm.newLength.value, format: .measurement(width: .abbreviated))
+                LabeledContent("Length", value: vm.updateLength.value, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {
@@ -134,7 +134,7 @@ struct EditFishView: View {
     private var weightSection: some View {
         DisclosureGroup(isExpanded: $weightExpanded) {
             HStack(spacing: 0.0) {
-                Picker("Whole", selection: $vm.newWeight.whole) {
+                Picker("Whole", selection: $vm.updateWeight.whole) {
                     ForEach(0..<100, id: \.self) { whole in
                         Text(whole, format: .number)
                             .tag(whole as Int?)
@@ -142,15 +142,15 @@ struct EditFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: vm.newWeight.whole) { newValue in
+                .onChange(of: vm.updateWeight.whole) { newValue in
                     if newValue == 0 {
-                        vm.newWeight.whole = nil
+                        vm.updateWeight.whole = nil
                     }
                 }
 
                 Text(".")
 
-                Picker("Decimal", selection: $vm.newWeight.decimal) {
+                Picker("Decimal", selection: $vm.updateWeight.decimal) {
                     ForEach(0..<10, id: \.self) { decimal in
                         Text(decimal, format: .number)
                             .tag(decimal as Int?)
@@ -158,15 +158,15 @@ struct EditFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: vm.newWeight.decimal) { newValue in
+                .onChange(of: vm.updateWeight.decimal) { newValue in
                     if newValue == 0 {
-                        vm.newWeight.decimal = nil
+                        vm.updateWeight.decimal = nil
                     }
                 }
             }
         } label: {
             HStack {
-                LabeledContent("Weight", value: vm.newWeight.value, format: .measurement(width: .abbreviated))
+                LabeledContent("Weight", value: vm.updateWeight.value, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {
@@ -180,7 +180,7 @@ struct EditFishView: View {
     }
     
     private var locationSection: some View {
-        TextField("Name", text: $vm.newLocationName)
+        TextField("Name", text: $vm.updateLocationName)
             .focused($isInputActive)
             .toolbar {
                 ToolbarItem(placement: .keyboard) {
@@ -199,7 +199,7 @@ struct EditFishView: View {
     }
     
     private var waterConditionSection: some View {
-        Picker("Water Condition", selection: $vm.newWaterCondition) {
+        Picker("Water Condition", selection: $vm.updateWaterCondition) {
             Text("Select")
                 .tag(nil as WaterCondition?)
             ForEach(WaterCondition.allCases) { waterCondition in

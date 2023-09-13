@@ -13,6 +13,7 @@ struct FishDetailView: View {
     @StateObject private var vm: DetailVM = .init()
     var fish: UIFish
     @State var isEditShowing = false
+    @State var deletePresented = false
     
     var body: some View {
         Form {
@@ -34,6 +35,13 @@ struct FishDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $isEditShowing) {
             EditFishView(vm: vm, fish: fish)
+        }
+        .confirmationDialog("Delete Fish?", isPresented: $deletePresented) {
+            Button("Delete", role: .destructive) {
+                vm.deleteFish(fish)
+            }
+        } message: {
+            Text("You cannot undo deleting this fish")
         }
         .toolbar {
             Button {
@@ -147,7 +155,7 @@ struct FishDetailView: View {
         HStack {
             Spacer()
             Button(role: .destructive) {
-                vm.deleteFish(fish)
+                deletePresented = true
             } label: {
                 HStack {
                     Image(systemName: "trash")
