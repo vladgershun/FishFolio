@@ -13,6 +13,7 @@ struct NewFishView: View {
     @FocusState var isInputActive: Bool
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
+    @State private var pickerShowing = false
     
     var body: some View {
         NavigationView {
@@ -26,6 +27,14 @@ struct NewFishView: View {
                 Section("Location") {
                     locationSection
                     waterConditionSection
+                }
+                
+                Section {
+                    vm.newImage?
+                        .resizable()
+                        .cornerRadius(10)
+                        .scaledToFit()
+                        .listRowInsets(EdgeInsets())
                 }
                 
                 Section {
@@ -47,6 +56,10 @@ struct NewFishView: View {
                 } label: {
                     Text("Clear")
                 }
+            }
+            .sheet(isPresented: $pickerShowing) {
+                ImagePicker(sourceType: .camera, selectedImage: $vm.newImage)
+                    .ignoresSafeArea()
             }
         }
         .navigationViewStyle(.stack)
@@ -226,7 +239,7 @@ struct NewFishView: View {
     
     private var imageSection: some View {
         Button {
-            // Add later
+            pickerShowing = true
         } label: {
             HStack {
                 Spacer()
@@ -234,7 +247,6 @@ struct NewFishView: View {
                 Text("Add Image")
                 Spacer()
             }
-            
         }
         .onTapGesture {
             withAnimation {

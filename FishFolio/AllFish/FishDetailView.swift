@@ -55,11 +55,12 @@ struct FishDetailView: View {
     
     private var imageSection: some View {
         fish.image?
-            .resizable()
-            .cornerRadius(10)
-            .scaledToFit()
-            .listRowInsets(EdgeInsets())
+                .resizable()
+                .cornerRadius(10)
+                .scaledToFit()
+                .listRowInsets(EdgeInsets())
     }
+    
     
     private var metricsSection: some View {
         Group {
@@ -179,6 +180,6 @@ struct FishDetailView_Previews: PreviewProvider {
                                     waterCondition: .muddy,
                                     coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
                                     locationName: "Klineline",
-                                    image: Image("Salmon")))
+                                    image: nil))
     }
 }

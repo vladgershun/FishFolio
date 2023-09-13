@@ -36,6 +36,8 @@
 		F5A3FB1C2AB1A24D009BF109 /* EditFishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB1B2AB1A24D009BF109 /* EditFishView.swift */; };
 		F5A3FB1E2AB1A9D5009BF109 /* EditSpeciesSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB1D2AB1A9D5009BF109 /* EditSpeciesSubView.swift */; };
 		F5A3FB202AB1AD0D009BF109 /* EditBaitSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB1F2AB1AD0D009BF109 /* EditBaitSubView.swift */; };
+		F5A3FB222AB2450E009BF109 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB212AB2450E009BF109 /* ImageManager.swift */; };
+		F5A3FB242AB2454E009BF109 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB232AB2454E009BF109 /* ImagePicker.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +84,8 @@
 		F5A3FB1B2AB1A24D009BF109 /* EditFishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFishView.swift; sourceTree = "<group>"; };
 		F5A3FB1D2AB1A9D5009BF109 /* EditSpeciesSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSpeciesSubView.swift; sourceTree = "<group>"; };
 		F5A3FB1F2AB1AD0D009BF109 /* EditBaitSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBaitSubView.swift; sourceTree = "<group>"; };
+		F5A3FB212AB2450E009BF109 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		F5A3FB232AB2454E009BF109 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,6 +231,8 @@
 			children = (
 				F5A3FB102AB0E607009BF109 /* FetchService.swift */,
 				F5A3FB192AB13538009BF109 /* CRUDService.swift */,
+				F5A3FB212AB2450E009BF109 /* ImageManager.swift */,
+				F5A3FB232AB2454E009BF109 /* ImagePicker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
 				F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */,
 				F5A3FB182AB121C1009BF109 /* NewFishVM.swift in Sources */,
+				F5A3FB222AB2450E009BF109 /* ImageManager.swift in Sources */,
 				F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */,
 				F5A3FB1C2AB1A24D009BF109 /* EditFishView.swift in Sources */,
 				F56C6B9D2AA7A63F00EBCDAA /* MainView.swift in Sources */,
@@ -365,6 +372,7 @@
 				F56C6B9B2AA7A63F00EBCDAA /* FishFolioApp.swift in Sources */,
 				F5A3FAF52AAFA0D7009BF109 /* FishRowView.swift in Sources */,
 				F5A3FB0E2AB02BAA009BF109 /* AllFishVM.swift in Sources */,
+				F5A3FB242AB2454E009BF109 /* ImagePicker.swift in Sources */,
 				F5A3FAF92AAFEF37009BF109 /* MapAnnotationView.swift in Sources */,
 				F5A3FB202AB1AD0D009BF109 /* EditBaitSubView.swift in Sources */,
 			);
@@ -514,11 +522,11 @@
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,11 +551,11 @@
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,6 +577,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladgershun.FishFolioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -587,6 +596,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vladgershun.FishFolioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

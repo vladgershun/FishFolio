@@ -27,6 +27,8 @@ class NewFishVM: ObservableObject {
     @Published var newCoordinates: CLLocationCoordinate2D?
     @Published var newImage: Image?
     
+    @Published var testImage: UIImage?
+    
     @Published var speciesList: [String] = []
     @Published var baitsList: [String] = []
     
