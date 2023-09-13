@@ -11,8 +11,8 @@ struct NewFishView: View {
     
     @StateObject private var vm: NewFishVM = .init()
     @FocusState var isInputActive: Bool
-    @State private var length: CustomNumber = .init()
-    @State private var weight: CustomNumber = .init()
+//    @State private var length: CustomNumber = .init()
+//    @State private var weight: CustomNumber = .init()
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
     
@@ -88,7 +88,7 @@ struct NewFishView: View {
     private var lengthSection: some View {
         DisclosureGroup(isExpanded: $lengthExpanded) {
             HStack(spacing: 0.0) {
-                Picker("Whole", selection: $length.whole) {
+                Picker("Whole", selection: $vm.length.whole) {
                     ForEach(0..<100, id: \.self) { whole in
                         Text(whole, format: .number)
                             .tag(whole as Int?)
@@ -96,15 +96,15 @@ struct NewFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: length.whole) { newValue in
+                .onChange(of: vm.length.whole) { newValue in
                     if newValue == 0 {
-                        length.whole = nil
+                        vm.length.whole = nil
                     }
                 }
 
                 Text(".")
 
-                Picker("Decimal", selection: $length.decimal) {
+                Picker("Decimal", selection: $vm.length.decimal) {
                     ForEach(0..<10, id: \.self) { decimal in
                         Text(decimal, format: .number)
                             .tag(decimal as Int?)
@@ -112,15 +112,15 @@ struct NewFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: length.decimal) { newValue in
+                .onChange(of: vm.length.decimal) { newValue in
                     if newValue == 0 {
-                        length.decimal = nil
+                        vm.length.decimal = nil
                     }
                 }
             }
         } label: {
             HStack {
-                LabeledContent("Length", value: length.value.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .abbreviated))
+                LabeledContent("Length", value: vm.length.value.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {
@@ -136,7 +136,7 @@ struct NewFishView: View {
     private var weightSection: some View {
         DisclosureGroup(isExpanded: $weightExpanded) {
             HStack(spacing: 0.0) {
-                Picker("Whole", selection: $weight.whole) {
+                Picker("Whole", selection: $vm.weight.whole) {
                     ForEach(0..<100, id: \.self) { whole in
                         Text(whole, format: .number)
                             .tag(whole as Int?)
@@ -144,15 +144,15 @@ struct NewFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: weight.whole) { newValue in
+                .onChange(of: vm.weight.whole) { newValue in
                     if newValue == 0 {
-                        weight.whole = nil
+                        vm.weight.whole = nil
                     }
                 }
 
                 Text(".")
 
-                Picker("Decimal", selection: $weight.decimal) {
+                Picker("Decimal", selection: $vm.weight.decimal) {
                     ForEach(0..<10, id: \.self) { decimal in
                         Text(decimal, format: .number)
                             .tag(decimal as Int?)
@@ -160,15 +160,15 @@ struct NewFishView: View {
                 }
                 .tint(.secondary)
                 .pickerStyle(.wheel)
-                .onChange(of: weight.decimal) { newValue in
+                .onChange(of: vm.weight.decimal) { newValue in
                     if newValue == 0 {
-                        weight.decimal = nil
+                        vm.weight.decimal = nil
                     }
                 }
             }
         } label: {
             HStack {
-                LabeledContent("Weight", value: weight.value.map { Measurement(value: $0, unit: UnitMass.pounds) }, format: .measurement(width: .abbreviated))
+                LabeledContent("Weight", value: vm.weight.value.map { Measurement(value: $0, unit: UnitMass.pounds) }, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {

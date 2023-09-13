@@ -37,8 +37,13 @@ struct FishDetailView: View {
                     Text(fish.bait)
                         .foregroundColor(.secondary)
                 }
-                LabeledContent("Length", value: fish.length, format: .measurement(width: .abbreviated))
-                LabeledContent("Weight", value: fish.weight, format: .measurement(width: .abbreviated))
+                if let length = fish.length {
+                    LabeledContent("Length", value: length, format: .measurement(width: .abbreviated))
+                }
+                if let weight = fish.weight {
+                    LabeledContent("Weight", value: weight, format: .measurement(width: .abbreviated))
+                }
+                
             }
             
             Section("Location") {
@@ -49,7 +54,10 @@ struct FishDetailView: View {
                         .foregroundColor(.secondary)
                 }
                 
-                LabeledContent("Temperature", value: fish.temperature, format: .measurement(width: .abbreviated))
+                if let temperature = fish.temperature {
+                    LabeledContent("Temperature", value: temperature, format: .measurement(width: .abbreviated))
+                }
+                
                 
                 if let waterCondition = fish.waterCondition {
                     HStack {
