@@ -44,6 +44,7 @@ struct FishRowView: View {
             if let image = fish.image {
                 Image(uiImage: image)
                     .resizable()
+                    .frame(width: 100, height: 80)
                     .scaledToFill()
                     .cornerRadius(10)
                     .foregroundColor(.white)
@@ -51,19 +52,18 @@ struct FishRowView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.secondary, lineWidth: 2)
                     )
-                    .frame(width: 80, height: 80)
                     .padding(.trailing)
             } else {
                 Image(systemName: "photo")
                     .resizable()
-                    .scaledToFill()
+                    .frame(width: 100, height: 80)
+                    .scaledToFit()
                     .cornerRadius(10)
                     .foregroundColor(.white)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(Color.secondary, lineWidth: 2)
                     )
-                    .frame(width: 80, height: 80)
                     .padding(.trailing)
             }
         }

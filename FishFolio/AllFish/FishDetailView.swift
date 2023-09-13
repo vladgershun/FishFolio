@@ -17,8 +17,16 @@ struct FishDetailView: View {
     
     var body: some View {
         Form {
-            Section {
-                imageSection
+            if let image = fish.image {
+                Section {
+                    Image(uiImage: image)
+                        .resizable()
+                        .cornerRadius(10)
+                        .scaledToFit()
+                        
+                        
+                }
+                .listRowInsets(EdgeInsets())
             }
             
             Section("Metrics") {
@@ -52,18 +60,6 @@ struct FishDetailView: View {
             }
         }
     }
-    
-    private var imageSection: AnyView {
-        if let image = fish.image {
-            Image(uiImage: image)
-                    .resizable()
-                    .cornerRadius(10)
-                    .scaledToFit()
-                    .listRowInsets(EdgeInsets())
-        }
-        return AnyView(EmptyView())
-    }
-    
     
     private var metricsSection: some View {
         Group {
