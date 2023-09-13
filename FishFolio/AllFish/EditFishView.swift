@@ -17,6 +17,9 @@ struct EditFishView: View {
     @FocusState var isInputActive: Bool
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
+    @State private var pickerShowing = false
+    @State private var photoOptionShowing = false
+    @State private var isCamera = true
     
     var body: some View {
         NavigationView {
@@ -33,6 +36,24 @@ struct EditFishView: View {
                     waterConditionSection
                 }
                 
+                if let image = vm.updateImage {
+                    Section {
+                        ZStack(alignment: .bottomTrailing) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .cornerRadius(10)
+                                .scaledToFit()
+                            Button(role: .destructive) {
+                                vm.updateImage = nil
+                            } label: {
+                                Image(systemName: "trash")
+                                    .font(.largeTitle)
+                            }
+                            .padding()
+                        }
+                    }.listRowInsets(EdgeInsets())
+                }
+                
                 Section {
                     imageSection
                 }
@@ -40,6 +61,22 @@ struct EditFishView: View {
                 Section {
                     createButtonSection
                 }
+            }
+            .fullScreenCover(isPresented: $pickerShowing){
+                ImagePicker(sourceType: isCamera ? .camera : .photoLibrary, selectedImage: $vm.updateImage)
+                    .ignoresSafeArea()
+            }
+            .confirmationDialog("Select Photo Option", isPresented: $photoOptionShowing) {
+                Button("Camera") {
+                    isCamera = true
+                    pickerShowing = true
+                }
+                Button("Photo Library") {
+                    isCamera = false
+                    pickerShowing = true
+                }
+            } message: {
+                Text("Select Option")
             }
         }
         
@@ -227,8 +264,10 @@ struct EditFishView: View {
                 Text("Add Image")
                 Spacer()
             }
-            
+            .contentShape(Rectangle())
         }
+        .buttonStyle(PlainButtonStyle())
+        .foregroundColor(Color.accentColor)
         .onTapGesture {
             withAnimation {
                 weightExpanded = false

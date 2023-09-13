@@ -14,7 +14,6 @@ struct NewFishView: View {
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
     @State private var pickerShowing = false
-    
     @State private var photoOptionShowing = false
     @State private var isCamera = true
     
@@ -49,11 +48,7 @@ struct NewFishView: View {
                             }
                             .padding()
                         }
-                        
-                        
                     }.listRowInsets(EdgeInsets())
-                    
-                    
                 }
                 
                 Section {
@@ -278,13 +273,17 @@ struct NewFishView: View {
                 Text("Add Image")
                 Spacer()
             }
+            .contentShape(Rectangle())
         }
+        .buttonStyle(PlainButtonStyle())
+        .foregroundColor(Color.accentColor)
         .onTapGesture {
             withAnimation {
                 weightExpanded = false
                 lengthExpanded = false
             }
         }
+        
     }
     
     private var createButtonSection: some View {
