@@ -42,7 +42,7 @@ struct FishRowView: View {
             Spacer()
             
             if let image = fish.image {
-                image
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .cornerRadius(10)
@@ -91,7 +91,7 @@ struct FishRowView_Previews: PreviewProvider {
                                  waterCondition: .muddy,
                                  coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
                                  locationName: "Klineline",
-                                 image: Image("Salmon")))
+                                 image: UIImage(named: "Salmon")))
             .frame(maxHeight: 100)
     }
 }

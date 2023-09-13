@@ -15,6 +15,9 @@ struct NewFishView: View {
     @State private var weightExpanded: Bool = false
     @State private var pickerShowing = false
     
+    @State private var photoOptionShowing = false
+    @State private var isCamera = true
+    
     var body: some View {
         NavigationView {
             Form {
@@ -29,12 +32,28 @@ struct NewFishView: View {
                     waterConditionSection
                 }
                 
-                Section {
-                    vm.newImage?
-                        .resizable()
-                        .cornerRadius(10)
-                        .scaledToFit()
-                        .listRowInsets(EdgeInsets())
+                
+                        
+                if let image = vm.newImage {
+                    Section {
+                        ZStack(alignment: .bottomTrailing) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .cornerRadius(10)
+                                .scaledToFit()
+                            Button(role: .destructive) {
+                                vm.newImage = nil
+                            } label: {
+                                Image(systemName: "trash")
+                                    .font(.largeTitle)
+                            }
+                            .padding()
+                        }
+                        
+                        
+                    }.listRowInsets(EdgeInsets())
+                    
+                    
                 }
                 
                 Section {
@@ -57,12 +76,24 @@ struct NewFishView: View {
                     Text("Clear")
                 }
             }
-            .sheet(isPresented: $pickerShowing) {
-                ImagePicker(sourceType: .camera, selectedImage: $vm.newImage)
+            .fullScreenCover(isPresented: $pickerShowing){
+                ImagePicker(sourceType: isCamera ? .camera : .photoLibrary, selectedImage: $vm.newImage)
                     .ignoresSafeArea()
             }
         }
         .navigationViewStyle(.stack)
+        .confirmationDialog("Select Photo Option", isPresented: $photoOptionShowing) {
+            Button("Camera") {
+                isCamera = true
+                pickerShowing = true
+            }
+            Button("Photo Library") {
+                isCamera = false
+                pickerShowing = true
+            }
+        } message: {
+            Text("Select Option")
+        }
     }
     
     private var speciesSection: some View {
@@ -239,7 +270,7 @@ struct NewFishView: View {
     
     private var imageSection: some View {
         Button {
-            pickerShowing = true
+            photoOptionShowing = true
         } label: {
             HStack {
                 Spacer()

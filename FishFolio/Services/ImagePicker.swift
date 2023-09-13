@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
-    
     var sourceType: UIImagePickerController.SourceType = .camera
-    @Binding var selectedImage: Image?
+    @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) private var presentationMode
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
@@ -34,7 +33,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? Image {
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
             }
             parent.presentationMode.wrappedValue.dismiss()

@@ -25,7 +25,7 @@ class DetailVM: ObservableObject {
     @Published var updateWeight: CustomWeight = .init()
     @Published var updateLocationName: String = ""
     @Published var updateWaterCondition: WaterCondition?
-    @Published var updateImage: Image?
+    @Published var updateImage: UIImage?
     
     @Published var speciesList: [String] = []
     @Published var baitsList: [String] = []

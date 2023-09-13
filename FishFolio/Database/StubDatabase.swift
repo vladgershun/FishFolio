@@ -24,7 +24,7 @@ class StubDatabase {
                              waterCondition: .muddy,
                              coordinates: CLLocationCoordinate2D(latitude: 45.707115, longitude: -122.656846),
                              locationName: "Klineline",
-                             image: Image("Salmon")),
+                             image: UIImage(named: "Salmon")),
                       UIFish(id: UUID(),
                              species: "Salmon",
                              bait: "Eggs",

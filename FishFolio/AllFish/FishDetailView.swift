@@ -53,12 +53,15 @@ struct FishDetailView: View {
         }
     }
     
-    private var imageSection: some View {
-        fish.image?
-                .resizable()
-                .cornerRadius(10)
-                .scaledToFit()
-                .listRowInsets(EdgeInsets())
+    private var imageSection: AnyView {
+        if let image = fish.image {
+            Image(uiImage: image)
+                    .resizable()
+                    .cornerRadius(10)
+                    .scaledToFit()
+                    .listRowInsets(EdgeInsets())
+        }
+        return AnyView(EmptyView())
     }
     
     

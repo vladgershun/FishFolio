@@ -26,7 +26,7 @@ struct UIFish: Identifiable, Equatable {
     var waterCondition: WaterCondition?
     var coordinates: CLLocationCoordinate2D?
     var locationName: String
-    var image: Image?
+    var image: UIImage?
 }
 
 struct CustomLength {
