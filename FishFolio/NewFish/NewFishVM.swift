@@ -16,16 +16,19 @@ class NewFishVM: ObservableObject {
     private var crudService: any CRUDService
     
     /// Variables for form
-    @Published var species: String = ""
-    @Published var bait: String = ""
-    @Published var length: CustomLength = .init()
-    @Published var weight: CustomWeight = .init()
-    @Published var timeCaught: Date = .now
-    @Published var temperature: Measurement<UnitTemperature>?
-    @Published var locationName: String = ""
-    @Published var waterCondition: WaterCondition?
-    @Published var coordinates: CLLocationCoordinate2D?
-    @Published var image: Image?
+    @Published var newSpecies: String = ""
+    @Published var newBait: String = ""
+    @Published var newLength: CustomLength = .init()
+    @Published var newWeight: CustomWeight = .init()
+    @Published var newTimeCaught: Date = .now
+    @Published var newTemperature: Measurement<UnitTemperature>?
+    @Published var newLocationName: String = ""
+    @Published var newWaterCondition: WaterCondition?
+    @Published var newCoordinates: CLLocationCoordinate2D?
+    @Published var newImage: Image?
+    
+    @Published var speciesList: [String] = []
+    @Published var baitsList: [String] = []
     
     
     init(crudService: any CRUDService = StubCRUDService()) {
@@ -33,32 +36,56 @@ class NewFishVM: ObservableObject {
     }
     
     func clearForm() {
-        species = ""
-        bait = ""
-        length.whole = nil
-        length.decimal = nil
-        weight.whole = nil
-        weight.decimal = nil
-        locationName = ""
-        waterCondition = nil
-        image = nil
+        newSpecies = ""
+        newBait = ""
+        newLength.whole = nil
+        newLength.decimal = nil
+        newWeight.whole = nil
+        newWeight.decimal = nil
+        newLocationName = ""
+        newWaterCondition = nil
+        newImage = nil
     }
     
     func addFish() {
 
         let newFish = UIFish(id: UUID(),
-                             species: species,
-                             bait: bait,
-                             length: length.value,
-                             weight: weight.value,
-                             timeCaught: timeCaught,
-                             temperature: temperature,
-                             waterCondition: waterCondition,
-                             coordinates: coordinates,
-                             locationName: locationName,
-                             image: image)
+                             species: newSpecies,
+                             bait: newBait,
+                             length: newLength.value,
+                             weight: newWeight.value,
+                             timeCaught: newTimeCaught,
+                             temperature: newTemperature,
+                             waterCondition: newWaterCondition,
+                             coordinates: newCoordinates,
+                             locationName: newLocationName,
+                             image: newImage)
         
         crudService.addFish(newFish)
+    }
+    
+    func getSpecies() async {
+        self.speciesList = crudService.getSpecies()
+    }
+    
+    func addSpecies(_ species: String) {
+        crudService.addSpecies(species)
+    }
+    
+    func deleteSpecies(_ species: String) {
+        crudService.deleteSpecies(species)
+    }
+    
+    func getBaits() async {
+        self.baitsList = crudService.getBaits()
+    }
+    
+    func addBait(_ bait: String) {
+        crudService.addBait(bait)
+    }
+    
+    func deleteBait(_ bait: String) {
+        crudService.deleteBait(bait)
     }
 }
 

@@ -10,14 +10,14 @@ import Foundation
 import SwiftUI
 
 protocol FetchService {
-    func fetchAllFish() -> [UIFish]
+    func getAllFish() -> [UIFish]
 }
 
 struct StubFetchService: FetchService {
     
     let db = StubDatabase.shared
     
-    func fetchAllFish() -> [UIFish] {
-        return db.returnData()
+    func getAllFish() -> [UIFish] {
+        return db.returnAllFish()
     }
 }

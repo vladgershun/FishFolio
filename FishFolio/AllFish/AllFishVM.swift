@@ -18,9 +18,6 @@ class AllFishVM: ObservableObject {
     }
     
     func task() async {
-        self.allFish = fetchService.fetchAllFish()
+        self.allFish = fetchService.getAllFish()
     }
-    
-
-    
 }

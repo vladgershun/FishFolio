@@ -10,9 +10,8 @@ import SwiftUI
 struct SpeciesSubView: View {
     
     @Environment(\.dismiss) var dismiss
-    
+    @ObservedObject var vm: NewFishVM
     @Binding var species: String
-    @State var allSpecies = ["Salmon", "Trout", "Bass"]
     @State private var selected = false
     @State private var searchText = ""
     @State private var newSpeciesShowing = false
@@ -44,42 +43,44 @@ struct SpeciesSubView: View {
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline) //Temp fix to spacing bug.
+        .navigationBarTitleDisplayMode(.inline)
         .searchable(text: $searchText, prompt: "Search Species")
         .toolbar {
             Button { newSpeciesShowing = true } label: { Image(systemName: "plus") }
         }
         .alert("Add Species", isPresented: $newSpeciesShowing) {
             TextField("", text: $newSpecies)
-            Button("Add") { addSpecies(newSpecies) }
+            Button("Add") {
+                vm.addSpecies(newSpecies)
+                newSpecies = ""
+                Task {
+                   await vm.getSpecies()
+                }
+            }
             Button("Cancel", role: .cancel) { newSpecies = "" }
+        }
+        .task {
+            await vm.getSpecies()
         }
     }
     
     var searchedSpecies: [String] {
         if searchText.isEmpty {
-            return allSpecies
+            return vm.speciesList
         } else {
-            return allSpecies.filter { $0.localizedCaseInsensitiveContains(searchText) }
+            return vm.speciesList.filter { $0.localizedCaseInsensitiveContains(searchText) }
         }
     }
     
     func testDelete(at offsets: IndexSet) {
         // Bug where if you search something and try to delete it will always delete index 0
-        allSpecies.remove(atOffsets: offsets)
+        vm.speciesList.remove(atOffsets: offsets)
     }
     
-    func addSpecies(_ species: String) {
-        if !species.isEmpty && !allSpecies.contains(species) {
-            allSpecies.append(species)
-            newSpecies = ""
-        }
-        newSpecies = ""
-    }
 }
 
 struct SpeciesSubView_Previews: PreviewProvider {
     static var previews: some View {
-        SpeciesSubView(species: .constant("Salmon"))
+        SpeciesSubView(vm: NewFishVM(), species: .constant("Salmon"))
     }
 }

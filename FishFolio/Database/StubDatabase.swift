@@ -37,8 +37,13 @@ class StubDatabase {
                              locationName: "Klineline",
                              image: nil)]
     
+    var demoSpecies = ["Salmon", "Trout", "Bass"]
+    var demoBaits = ["Eggs", "Worms", "Corn"]
+    
     private init() {}
     
-    func returnData() -> [UIFish] { return demoUIFish }
+    func returnAllFish() -> [UIFish] { return demoUIFish }
+    func returnSpecies() -> [String] { return demoSpecies}
+    func returnBaits() -> [String] { return demoBaits }
     
 }
