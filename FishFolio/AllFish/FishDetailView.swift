@@ -10,9 +10,9 @@ import SwiftUI
 
 struct FishDetailView: View {
     
-    var fish: UIFish
-    
     @StateObject private var vm: DetailVM = .init()
+    var fish: UIFish
+    @State var isEditShowing = false
     
     var body: some View {
         Form {
@@ -32,9 +32,13 @@ struct FishDetailView: View {
             deleteButtonSection
         }
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $isEditShowing) {
+            EditFishView(vm: vm, fish: fish)
+        }
         .toolbar {
             Button {
-                
+                vm.populateForm(fish)
+                isEditShowing = true
             } label: {
                 Image(systemName: "square.and.pencil")
             }

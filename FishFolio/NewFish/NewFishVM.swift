@@ -69,7 +69,9 @@ class NewFishVM: ObservableObject {
     }
     
     func addSpecies(_ species: String) {
-        crudService.addSpecies(species)
+        if !speciesList.contains(species) {
+            crudService.addSpecies(species)
+        }
     }
     
     func deleteSpecies(_ species: String) {
@@ -81,7 +83,9 @@ class NewFishVM: ObservableObject {
     }
     
     func addBait(_ bait: String) {
-        crudService.addBait(bait)
+        if !baitsList.contains(bait) {
+            crudService.addBait(bait)
+        }  
     }
     
     func deleteBait(_ bait: String) {
