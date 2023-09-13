@@ -27,7 +27,10 @@ struct AllFishView: View {
             .navigationBarTitle("Fish")
         }
         .task {
-            await vm.task()
+            //temp publisher for live data
+            for await _ in vm.$allFish.values {
+                await vm.task() 
+            }
         }
     }
 

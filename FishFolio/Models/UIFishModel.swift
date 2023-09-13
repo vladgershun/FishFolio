@@ -29,3 +29,36 @@ struct UIFish: Identifiable, Equatable {
     var image: Image?
 }
 
+struct CustomLength {
+    var whole: Int?
+    var decimal: Int?
+    
+    var value: Measurement<UnitLength>? {
+        if let whole {
+            let value = Double(whole) + (Double(decimal ?? 0) * 0.1)
+            return Measurement(value: value, unit: .inches)
+        }
+        if let decimal {
+            let value = Double(whole ?? 0) + (Double(decimal) * 0.1)
+            return Measurement(value: value, unit: .inches)
+        }
+        return nil
+    }
+}
+
+struct CustomWeight {
+    var whole: Int?
+    var decimal: Int?
+    
+    var value: Measurement<UnitMass>? {
+        if let whole {
+            let value = Double(whole) + (Double(decimal ?? 0) * 0.1)
+            return Measurement(value: value, unit: .pounds)
+        }
+        if let decimal {
+            let value = Double(whole ?? 0) + (Double(decimal) * 0.1)
+            return Measurement(value: value, unit: .pounds)
+        }
+        return nil
+    }
+}

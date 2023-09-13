@@ -17,81 +17,109 @@ struct FishDetailView: View {
     var body: some View {
         Form {
             Section {
-                fish.image?
-                    .resizable()
-                    .cornerRadius(10)
-                    .scaledToFit()
-                    .listRowInsets(EdgeInsets())
+                imageSection
             }
             
             Section("Metrics") {
-                HStack {
-                    Text("Species")
-                    Spacer()
-                    Text(fish.species)
-                        .foregroundColor(.secondary)
-                }
-                HStack {
-                    Text("Bait")
-                    Spacer()
-                    Text(fish.bait)
-                        .foregroundColor(.secondary)
-                }
-                if let length = fish.length {
-                    LabeledContent("Length", value: length, format: .measurement(width: .abbreviated))
-                }
-                if let weight = fish.weight {
-                    LabeledContent("Weight", value: weight, format: .measurement(width: .abbreviated))
-                }
-                
+                metricsSection
             }
             
             Section("Location") {
-                HStack {
-                    Text("Name")
-                    Spacer()
-                    Text(fish.locationName)
-                        .foregroundColor(.secondary)
-                }
-                
-                if let temperature = fish.temperature {
-                    LabeledContent("Temperature", value: temperature, format: .measurement(width: .abbreviated))
-                }
-                
-                
-                if let waterCondition = fish.waterCondition {
-                    HStack {
-                        Text("Water Condition")
-                        Spacer()
-                        Text(waterCondition.description)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                
-                
-                LabeledContent("Date", value: fish.timeCaught, format: Date.FormatStyle().day().month().year())
-                LabeledContent("Time", value: fish.timeCaught, format: Date.FormatStyle().hour().minute())
-               
-                if let latitude = fish.coordinates?.latitude {
-                    HStack {
-                        Text("Latitude")
-                        Spacer()
-                        Text(latitude, format: .number)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                
-                if let longitude = fish.coordinates?.longitude {
-                    HStack {
-                        Text("Longitude")
-                        Spacer()
-                        Text(longitude, format: .number)
-                            .foregroundColor(.secondary)
-                    }
-                }
-                
+                locationSection
             }
             
+            mapSection
+            deleteButtonSection
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            Button {
+                
+            } label: {
+                Image(systemName: "square.and.pencil")
+            }
+        }
+    }
+    
+    private var imageSection: some View {
+        fish.image?
+            .resizable()
+            .cornerRadius(10)
+            .scaledToFit()
+            .listRowInsets(EdgeInsets())
+    }
+    
+    private var metricsSection: some View {
+        Group {
+            HStack {
+                Text("Species")
+                Spacer()
+                Text(fish.species)
+                    .foregroundColor(.secondary)
+            }
+            HStack {
+                Text("Bait")
+                Spacer()
+                Text(fish.bait)
+                    .foregroundColor(.secondary)
+            }
+            if let length = fish.length {
+                LabeledContent("Length", value: length, format: .measurement(width: .abbreviated))
+            }
+            if let weight = fish.weight {
+                LabeledContent("Weight", value: weight, format: .measurement(width: .abbreviated))
+            }
+        }
+    }
+    
+    private var locationSection: some View {
+        Group {
+            HStack {
+                Text("Name")
+                Spacer()
+                Text(fish.locationName)
+                    .foregroundColor(.secondary)
+            }
+            
+            if let temperature = fish.temperature {
+                LabeledContent("Temperature", value: temperature, format: .measurement(width: .abbreviated))
+            }
+            
+            
+            if let waterCondition = fish.waterCondition {
+                HStack {
+                    Text("Water Condition")
+                    Spacer()
+                    Text(waterCondition.description)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            LabeledContent("Date", value: fish.timeCaught, format: Date.FormatStyle().day().month().year())
+            LabeledContent("Time", value: fish.timeCaught, format: Date.FormatStyle().hour().minute())
+           
+            if let latitude = fish.coordinates?.latitude {
+                HStack {
+                    Text("Latitude")
+                    Spacer()
+                    Text(latitude, format: .number)
+                        .foregroundColor(.secondary)
+                }
+            }
+            
+            if let longitude = fish.coordinates?.longitude {
+                HStack {
+                    Text("Longitude")
+                    Spacer()
+                    Text(longitude, format: .number)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+    
+    private var mapSection: some View {
+        Group {
             if let coordinates = fish.coordinates {
                 Section {
                     Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates,
@@ -108,24 +136,21 @@ struct FishDetailView: View {
                     .allowsHitTesting(false)
                 }
             }
-            
-            
-            HStack {
-                Spacer()
-                Button(role: .destructive) {
-                    vm.deleteFish(fish)
-                } label: {
-                    HStack {
-                        Image(systemName: "trash")
-                        Text("Delete Fish")
-                    }
-                }
-                Spacer()
-            }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            Button { } label: { Image(systemName: "square.and.pencil") }
+    }
+    
+    private var deleteButtonSection: some View {
+        HStack {
+            Spacer()
+            Button(role: .destructive) {
+                vm.deleteFish(fish)
+            } label: {
+                HStack {
+                    Image(systemName: "trash")
+                    Text("Delete Fish")
+                }
+            }
+            Spacer()
         }
     }
 }

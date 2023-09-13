@@ -15,7 +15,7 @@ struct FishRowView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(fish.species)
+                Text(fish.locationName)
                     .font(.title)
                     .bold()
                     .foregroundColor(.primary)
@@ -23,14 +23,14 @@ struct FishRowView: View {
                 Spacer()
                 
                 HStack {
-                    Image(systemName: "globe")
-                    Text(fish.locationName)
+//                    Image(systemName: "fish")
+                    Text(fish.species)
                 }
                 .foregroundColor(.secondary)
                 .font(.subheadline)
                 
                 HStack {
-                    Image(systemName: "calendar")
+//                    Image(systemName: "calendar")
                     Text(fish.timeCaught, format: Date.FormatStyle().month(.abbreviated).day().year())
                         
                 }

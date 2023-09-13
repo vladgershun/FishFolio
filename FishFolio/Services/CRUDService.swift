@@ -27,6 +27,7 @@ struct StubCRUDService: CRUDService {
     
     func deleteFish(_ fish: UIFish) {
         if let index = db.demoUIFish.firstIndex(of: fish) {
+            print(index)
             db.demoUIFish.remove(at: index)
         }
     }

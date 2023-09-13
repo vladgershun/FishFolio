@@ -6,6 +6,8 @@
 //
 
 import MapKit
+import SwiftUI
+
 import Foundation
 
 @MainActor
@@ -23,4 +25,5 @@ class DetailVM: ObservableObject {
     func deleteFish(_ fish: UIFish) {
         crudService.deleteFish(fish)
     }
+
 }

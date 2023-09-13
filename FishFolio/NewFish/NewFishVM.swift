@@ -18,13 +18,13 @@ class NewFishVM: ObservableObject {
     /// Variables for form
     @Published var species: String = ""
     @Published var bait: String = ""
-    @Published var length: CustomNumber = .init()
-    @Published var weight: CustomNumber = .init()
+    @Published var length: CustomLength = .init()
+    @Published var weight: CustomWeight = .init()
     @Published var timeCaught: Date = .now
     @Published var temperature: Measurement<UnitTemperature>?
+    @Published var locationName: String = ""
     @Published var waterCondition: WaterCondition?
     @Published var coordinates: CLLocationCoordinate2D?
-    @Published var locationName: String = ""
     @Published var image: Image?
     
     
@@ -32,13 +32,25 @@ class NewFishVM: ObservableObject {
         self.crudService = crudService
     }
     
+    func clearForm() {
+        species = ""
+        bait = ""
+        length.whole = nil
+        length.decimal = nil
+        weight.whole = nil
+        weight.decimal = nil
+        locationName = ""
+        waterCondition = nil
+        image = nil
+    }
+    
     func addFish() {
 
         let newFish = UIFish(id: UUID(),
                              species: species,
                              bait: bait,
-                             length: Measurement(value: length.value ?? 0, unit: .inches),
-                             weight: Measurement(value: weight.value ?? 0, unit: .pounds),
+                             length: length.value,
+                             weight: weight.value,
                              timeCaught: timeCaught,
                              temperature: temperature,
                              waterCondition: waterCondition,

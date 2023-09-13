@@ -11,8 +11,6 @@ struct NewFishView: View {
     
     @StateObject private var vm: NewFishVM = .init()
     @FocusState var isInputActive: Bool
-//    @State private var length: CustomNumber = .init()
-//    @State private var weight: CustomNumber = .init()
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
     
@@ -25,7 +23,6 @@ struct NewFishView: View {
                     lengthSection
                     weightSection
                 }
-                
                 Section("Location") {
                     locationSection
                     waterConditionSection
@@ -36,12 +33,19 @@ struct NewFishView: View {
                 }
 
                 Section {
-                    createSection
+                    createButtonSection
                 }
             }
             .navigationTitle("New Fish")
             .toolbar {
-                Button { clearForm() } label: { Text("Clear") }
+                Button {
+                    vm.clearForm()
+                    isInputActive = false
+                    lengthExpanded = false
+                    weightExpanded = false
+                } label: {
+                    Text("Clear")
+                }
             }
         }
         .navigationViewStyle(.stack)
@@ -120,7 +124,7 @@ struct NewFishView: View {
             }
         } label: {
             HStack {
-                LabeledContent("Length", value: vm.length.value.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .abbreviated))
+                LabeledContent("Length", value: vm.length.value, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {
@@ -168,7 +172,7 @@ struct NewFishView: View {
             }
         } label: {
             HStack {
-                LabeledContent("Weight", value: vm.weight.value.map { Measurement(value: $0, unit: UnitMass.pounds) }, format: .measurement(width: .abbreviated))
+                LabeledContent("Weight", value: vm.weight.value, format: .measurement(width: .abbreviated))
             }
             .contentShape(Rectangle())
             .onTapGesture {
@@ -239,10 +243,13 @@ struct NewFishView: View {
         }
     }
     
-    private var createSection: some View {
+    private var createButtonSection: some View {
         Button {
             vm.addFish()
-            clearForm()
+            vm.clearForm()
+            isInputActive = false
+            lengthExpanded = false
+            weightExpanded = false
         } label: {
             HStack {
                 Spacer()
@@ -251,12 +258,7 @@ struct NewFishView: View {
             }
         }
     }
-    
-    func clearForm() {
-        isInputActive = false
-        lengthExpanded = false
-        weightExpanded = false
-    }
+
 }
 
 struct NewFishView_Previews: PreviewProvider {
@@ -287,20 +289,7 @@ extension LabeledContent<Text, Text> {
     }
 }
 
-struct CustomNumber {
-    var whole: Int?
-    var decimal: Int?
-    
-    var value: Double? {
-        if let whole {
-            return Double(whole) + (Double(decimal ?? 0) * 0.1)
-        }
-        if let decimal {
-            return Double(whole ?? 0) + (Double(decimal) * 0.1)
-        }
-        return nil
-    }
-}
+
 
 
 
