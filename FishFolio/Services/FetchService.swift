@@ -15,7 +15,7 @@ protocol FetchService {
 
 struct StubFetchService: FetchService {
     
-    var db = StubDatabase.shared
+    let db = StubDatabase.shared
     
     func fetchAllFish() -> [UIFish] {
         return db.returnData()

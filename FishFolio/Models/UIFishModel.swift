@@ -11,17 +11,20 @@ import SwiftUI
 
 
 /// Fish structure to be used within view.
-struct UIFish: Identifiable {
-    
+struct UIFish: Identifiable, Equatable {
+    static func == (lhs: UIFish, rhs: UIFish) -> Bool {
+        return lhs.id == rhs.id
+    }
+       
     var id: UUID
     var species: String
     var bait: String
-    var length: Measurement<UnitLength>
-    var weight: Measurement<UnitMass>
+    var length: Measurement<UnitLength>?
+    var weight: Measurement<UnitMass>?
     var timeCaught: Date
-    var temperature: Measurement<UnitTemperature>
-    var waterCondition: WaterCondition
-    var coordinates: CLLocationCoordinate2D
+    var temperature: Measurement<UnitTemperature>?
+    var waterCondition: WaterCondition?
+    var coordinates: CLLocationCoordinate2D?
     var locationName: String
     var image: Image?
 }

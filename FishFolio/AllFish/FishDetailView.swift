@@ -11,6 +11,7 @@ import SwiftUI
 struct FishDetailView: View {
     
     var fish: UIFish
+    
     @StateObject private var vm: DetailVM = .init()
     
     var body: some View {
@@ -50,45 +51,56 @@ struct FishDetailView: View {
                 
                 LabeledContent("Temperature", value: fish.temperature, format: .measurement(width: .abbreviated))
                 
-                HStack {
-                    Text("Water Condition")
-                    Spacer()
-                    Text(fish.waterCondition.description)
-                        .foregroundColor(.secondary)
+                if let waterCondition = fish.waterCondition {
+                    HStack {
+                        Text("Water Condition")
+                        Spacer()
+                        Text(waterCondition.description)
+                            .foregroundColor(.secondary)
+                    }
                 }
+                
                 
                 LabeledContent("Date", value: fish.timeCaught, format: Date.FormatStyle().day().month().year())
                 LabeledContent("Time", value: fish.timeCaught, format: Date.FormatStyle().hour().minute())
                
-                HStack {
-                    Text("Latitude")
-                    Spacer()
-                    Text(fish.coordinates.latitude, format: .number)
-                        .foregroundColor(.secondary)
-                }
-                
-                HStack {
-                    Text("Longitude")
-                    Spacer()
-                    Text(fish.coordinates.longitude, format: .number)
-                        .foregroundColor(.secondary)
-                }
-            }
- 
-            Section {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: fish.coordinates,
-                                                                   span: vm.mapSpan)),
-                    annotationItems: [fish]) { fish in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: fish.coordinates.latitude, longitude: fish.coordinates.longitude)) {
-                        MapAnnotationView()
-                            .shadow(radius: 10)
+                if let latitude = fish.coordinates?.latitude {
+                    HStack {
+                        Text("Latitude")
+                        Spacer()
+                        Text(latitude, format: .number)
+                            .foregroundColor(.secondary)
                     }
                 }
-                .listRowInsets(EdgeInsets())
-                .cornerRadius(10)
-                .aspectRatio(1, contentMode: .fit)
-                .allowsHitTesting(false)
+                
+                if let longitude = fish.coordinates?.longitude {
+                    HStack {
+                        Text("Longitude")
+                        Spacer()
+                        Text(longitude, format: .number)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
             }
+            
+            if let coordinates = fish.coordinates {
+                Section {
+                    Map(coordinateRegion: .constant(MKCoordinateRegion(center: coordinates,
+                                                                       span: vm.mapSpan)),
+                        annotationItems: [fish]) { fish in
+                        MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)) {
+                            MapAnnotationView()
+                                .shadow(radius: 10)
+                        }
+                    }
+                    .listRowInsets(EdgeInsets())
+                    .cornerRadius(10)
+                    .aspectRatio(1, contentMode: .fit)
+                    .allowsHitTesting(false)
+                }
+            }
+            
             
             HStack {
                 Spacer()
@@ -105,11 +117,7 @@ struct FishDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            Button {
-                vm.editFish(fish)
-            } label: {
-                Image(systemName: "square.and.pencil")
-            }
+            Button { } label: { Image(systemName: "square.and.pencil") }
         }
     }
 }

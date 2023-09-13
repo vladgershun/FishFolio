@@ -33,6 +33,7 @@
 		F5A3FB142AB0E6F1009BF109 /* StubDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB132AB0E6F1009BF109 /* StubDatabase.swift */; };
 		F5A3FB162AB11BF2009BF109 /* DetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB152AB11BF2009BF109 /* DetailVM.swift */; };
 		F5A3FB182AB121C1009BF109 /* NewFishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB172AB121C1009BF109 /* NewFishVM.swift */; };
+		F5A3FB1A2AB13538009BF109 /* CRUDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB192AB13538009BF109 /* CRUDService.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		F5A3FB132AB0E6F1009BF109 /* StubDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDatabase.swift; sourceTree = "<group>"; };
 		F5A3FB152AB11BF2009BF109 /* DetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVM.swift; sourceTree = "<group>"; };
 		F5A3FB172AB121C1009BF109 /* NewFishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFishVM.swift; sourceTree = "<group>"; };
+		F5A3FB192AB13538009BF109 /* CRUDService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRUDService.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A3FB102AB0E607009BF109 /* FetchService.swift */,
+				F5A3FB192AB13538009BF109 /* CRUDService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5A3FB112AB0E607009BF109 /* FetchService.swift in Sources */,
+				F5A3FB1A2AB13538009BF109 /* CRUDService.swift in Sources */,
 				F56C6BAA2AA7A8C700EBCDAA /* TabBarItem.swift in Sources */,
 				F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */,
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,

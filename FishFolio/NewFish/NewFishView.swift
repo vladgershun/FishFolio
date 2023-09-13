@@ -10,41 +10,9 @@ import SwiftUI
 struct NewFishView: View {
     
     @StateObject private var vm: NewFishVM = .init()
-    
     @FocusState var isInputActive: Bool
-    
-    @State private var species: String = ""
-    
-    private var length: Double? {
-        if let lengthWhole {
-            return Double(lengthWhole) + (Double(lengthDecimal ?? 0) * 0.1)
-        }
-        if let lengthDecimal {
-            return Double(lengthWhole ?? 0) + (Double(lengthDecimal) * 0.1)
-        }
-        return nil
-    }
-    
-    @State private var lengthWhole: Int?
-    @State private var lengthDecimal: Int?
-    
-    @State private var weightWhole: Int?
-    @State private var weightDecimal: Int?
-    
-    private var weight: Double? {
-        if let weightWhole {
-            return Double(weightWhole) + (Double(weightDecimal ?? 0) * 0.1)
-        }
-        if let weightDecimal {
-            return Double(weightWhole ?? 0) + (Double(weightDecimal) * 0.1)
-        }
-        return nil
-    }
-    
-    @State private var bait: String = ""
-    @State private var waterCondition: WaterCondition?
-    @State private var locationName: String = ""
-    
+    @State private var length: CustomNumber = .init()
+    @State private var weight: CustomNumber = .init()
     @State private var lengthExpanded: Bool = false
     @State private var weightExpanded: Bool = false
     
@@ -52,197 +20,23 @@ struct NewFishView: View {
         NavigationView {
             Form {
                 Section("Fish") {
-                    NavigationLink {
-                        SpeciesSubView(species: $species)
-                            .onAppear {
-                                withAnimation {
-                                    weightExpanded = false
-                                    lengthExpanded = false
-                                }
-                            }
-                    } label: {
-                        HStack {
-                            Text("Species")
-                            Spacer()
-                            Text(species)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    
-                    NavigationLink {
-                        BaitSubView(bait: $bait)
-                            .onAppear {
-                                withAnimation {
-                                    weightExpanded = false
-                                    lengthExpanded = false
-                                }
-                            }
-                    } label: {
-                        HStack {
-                            Text("Bait")
-                            Spacer()
-                            Text(bait)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    DisclosureGroup(isExpanded: $lengthExpanded) {
-                        HStack(spacing: 0.0) {
-                            Picker("Whole", selection: $lengthWhole) {
-                                ForEach(0..<100, id: \.self) { whole in
-                                    Text(whole, format: .number)
-                                        .tag(whole as Int?)
-                                }
-                            }
-                            .tint(.secondary)
-                            .pickerStyle(.wheel)
-                            .onChange(of: lengthWhole) { newValue in
-                                if newValue == 0 {
-                                    lengthWhole = nil
-                                }
-                            }
-                            
-                            Text(".")
-                            
-                            Picker("Decimal", selection: $lengthDecimal) {
-                                ForEach(0..<10, id: \.self) { decimal in
-                                    Text(decimal, format: .number)
-                                        .tag(decimal as Int?)
-                                }
-                            }
-                            .tint(.secondary)
-                            .pickerStyle(.wheel)
-                            .onChange(of: lengthDecimal) { newValue in
-                                if newValue == 0 {
-                                    lengthDecimal = nil
-                                }
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            LabeledContent("Length", value: length.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .wide))
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            withAnimation {
-                                lengthExpanded.toggle()
-                                weightExpanded = false
-                            }
-                        }
-                    }
-                    .tint(.secondary)
-                    
-                    DisclosureGroup(isExpanded: $weightExpanded) {
-                        HStack(spacing: 0.0) {
-                            Picker("Whole", selection: $weightWhole) {
-                                ForEach(0..<100, id: \.self) { whole in
-                                    Text(whole, format: .number)
-                                        .tag(whole as Int?)
-                                }
-                            }
-                            .tint(.secondary)
-                            .pickerStyle(.wheel)
-                            .onChange(of: weightWhole) { newValue in
-                                if newValue == 0 {
-                                    weightWhole = nil
-                                }
-                            }
-                            
-                            Text(".")
-                            
-                            Picker("Decimal", selection: $weightDecimal) {
-                                ForEach(0..<10, id: \.self) { decimal in
-                                    Text(decimal, format: .number)
-                                        .tag(decimal as Int?)
-                                }
-                            }
-                            .tint(.secondary)
-                            .pickerStyle(.wheel)
-                            .onChange(of: weightDecimal) { newValue in
-                                if newValue == 0 {
-                                    weightDecimal = nil
-                                }
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            LabeledContent("Weight", value: weight.map { Measurement(value: $0, unit: UnitMass.pounds) }, format: .measurement(width: .wide))
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            withAnimation {
-                                lengthExpanded = false
-                                weightExpanded.toggle()
-                            }
-                        }
-                    }
-                    .tint(.secondary)
+                    speciesSection
+                    baitSection
+                    lengthSection
+                    weightSection
                 }
                 
                 Section("Location") {
-                    TextField("Name", text: $locationName)
-                        .focused($isInputActive)
-                        .toolbar {
-                            ToolbarItem(placement: .keyboard) {
-                                HStack {
-                                    Spacer()
-                                    Button("Done") { isInputActive = false }
-                                }
-                            }
-                        }
-                        .onTapGesture {
-                            withAnimation {
-                                weightExpanded = false
-                                lengthExpanded = false
-                            }
-                        }
-                    
-                    Picker("Water Condition", selection: $waterCondition) {
-                        Text("Select")
-                            .tag(nil as WaterCondition?)
-                        ForEach(WaterCondition.allCases) { waterCondition in
-                            Text(waterCondition.description)
-                                .tag(waterCondition as WaterCondition?)
-                        }
-                    }
-                    .tint(.secondary)
-                    .pickerStyle(.menu)
-                    .onTapGesture {
-                        withAnimation {
-                            weightExpanded = false
-                            lengthExpanded = false
-                        }
-                    }
-                }
-                
-                Button {
-                    // Add later
-                } label: {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "camera")
-                        Text("Add Image")
-                        Spacer()
-                    }
-                    
-                }
-                .onTapGesture {
-                    withAnimation {
-                        weightExpanded = false
-                        lengthExpanded = false
-                    }
+                    locationSection
+                    waterConditionSection
                 }
                 
                 Section {
-                    Button { clearForm() } label: {
-                        HStack {
-                            Spacer()
-                            Text("Create")
-                            Spacer()
-                        }
-                        
-                    }
+                    imageSection
+                }
+
+                Section {
+                    createSection
                 }
             }
             .navigationTitle("New Fish")
@@ -253,16 +47,213 @@ struct NewFishView: View {
         .navigationViewStyle(.stack)
     }
     
+    private var speciesSection: some View {
+        NavigationLink {
+            SpeciesSubView(species: $vm.species)
+                .onAppear {
+                    withAnimation {
+                        weightExpanded = false
+                        lengthExpanded = false
+                    }
+                }
+        } label: {
+            HStack {
+                Text("Species")
+                Spacer()
+                Text(vm.species)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
+    private var baitSection: some View {
+        NavigationLink {
+            BaitSubView(bait: $vm.bait)
+                .onAppear {
+                    withAnimation {
+                        weightExpanded = false
+                        lengthExpanded = false
+                    }
+                }
+        } label: {
+            HStack {
+                Text("Bait")
+                Spacer()
+                Text(vm.bait)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+    
+    private var lengthSection: some View {
+        DisclosureGroup(isExpanded: $lengthExpanded) {
+            HStack(spacing: 0.0) {
+                Picker("Whole", selection: $length.whole) {
+                    ForEach(0..<100, id: \.self) { whole in
+                        Text(whole, format: .number)
+                            .tag(whole as Int?)
+                    }
+                }
+                .tint(.secondary)
+                .pickerStyle(.wheel)
+                .onChange(of: length.whole) { newValue in
+                    if newValue == 0 {
+                        length.whole = nil
+                    }
+                }
+
+                Text(".")
+
+                Picker("Decimal", selection: $length.decimal) {
+                    ForEach(0..<10, id: \.self) { decimal in
+                        Text(decimal, format: .number)
+                            .tag(decimal as Int?)
+                    }
+                }
+                .tint(.secondary)
+                .pickerStyle(.wheel)
+                .onChange(of: length.decimal) { newValue in
+                    if newValue == 0 {
+                        length.decimal = nil
+                    }
+                }
+            }
+        } label: {
+            HStack {
+                LabeledContent("Length", value: length.value.map { Measurement(value: $0, unit: UnitLength.inches) }, format: .measurement(width: .abbreviated))
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    lengthExpanded.toggle()
+                    weightExpanded = false
+                }
+            }
+        }
+        .tint(.secondary)
+    }
+    
+    private var weightSection: some View {
+        DisclosureGroup(isExpanded: $weightExpanded) {
+            HStack(spacing: 0.0) {
+                Picker("Whole", selection: $weight.whole) {
+                    ForEach(0..<100, id: \.self) { whole in
+                        Text(whole, format: .number)
+                            .tag(whole as Int?)
+                    }
+                }
+                .tint(.secondary)
+                .pickerStyle(.wheel)
+                .onChange(of: weight.whole) { newValue in
+                    if newValue == 0 {
+                        weight.whole = nil
+                    }
+                }
+
+                Text(".")
+
+                Picker("Decimal", selection: $weight.decimal) {
+                    ForEach(0..<10, id: \.self) { decimal in
+                        Text(decimal, format: .number)
+                            .tag(decimal as Int?)
+                    }
+                }
+                .tint(.secondary)
+                .pickerStyle(.wheel)
+                .onChange(of: weight.decimal) { newValue in
+                    if newValue == 0 {
+                        weight.decimal = nil
+                    }
+                }
+            }
+        } label: {
+            HStack {
+                LabeledContent("Weight", value: weight.value.map { Measurement(value: $0, unit: UnitMass.pounds) }, format: .measurement(width: .abbreviated))
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                withAnimation {
+                    lengthExpanded = false
+                    weightExpanded.toggle()
+                }
+            }
+        }
+        .tint(.secondary)
+    }
+    
+    private var locationSection: some View {
+        TextField("Name", text: $vm.locationName)
+            .focused($isInputActive)
+            .toolbar {
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button("Done") { isInputActive = false }
+                    }
+                }
+            }
+            .onTapGesture {
+                withAnimation {
+                    weightExpanded = false
+                    lengthExpanded = false
+                }
+            }
+    }
+    
+    private var waterConditionSection: some View {
+        Picker("Water Condition", selection: $vm.waterCondition) {
+            Text("Select")
+                .tag(nil as WaterCondition?)
+            ForEach(WaterCondition.allCases) { waterCondition in
+                Text(waterCondition.description)
+                    .tag(waterCondition as WaterCondition?)
+            }
+        }
+        .tint(.secondary)
+        .pickerStyle(.menu)
+        .onTapGesture {
+            withAnimation {
+                weightExpanded = false
+                lengthExpanded = false
+            }
+        }
+    }
+    
+    private var imageSection: some View {
+        Button {
+            // Add later
+        } label: {
+            HStack {
+                Spacer()
+                Image(systemName: "camera")
+                Text("Add Image")
+                Spacer()
+            }
+            
+        }
+        .onTapGesture {
+            withAnimation {
+                weightExpanded = false
+                lengthExpanded = false
+            }
+        }
+    }
+    
+    private var createSection: some View {
+        Button {
+            vm.addFish()
+            clearForm()
+        } label: {
+            HStack {
+                Spacer()
+                Text("Create")
+                Spacer()
+            }
+        }
+    }
+    
     func clearForm() {
         isInputActive = false
-        species = ""
-        lengthWhole = nil
-        lengthDecimal = nil
-        weightWhole = nil
-        weightDecimal = nil
-        bait = ""
-        waterCondition = nil
-        locationName = ""
         lengthExpanded = false
         weightExpanded = false
     }
@@ -296,7 +287,20 @@ extension LabeledContent<Text, Text> {
     }
 }
 
-
+struct CustomNumber {
+    var whole: Int?
+    var decimal: Int?
+    
+    var value: Double? {
+        if let whole {
+            return Double(whole) + (Double(decimal ?? 0) * 0.1)
+        }
+        if let decimal {
+            return Double(whole ?? 0) + (Double(decimal) * 0.1)
+        }
+        return nil
+    }
+}
 
 
 
