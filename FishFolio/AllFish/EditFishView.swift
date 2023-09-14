@@ -256,7 +256,7 @@ struct EditFishView: View {
     
     private var imageSection: some View {
         Button {
-            // Add later
+            photoOptionShowing = true
         } label: {
             HStack {
                 Spacer()
