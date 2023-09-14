@@ -33,7 +33,5 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         let place = try await geoCoder.reverseGeocodeLocation(location)
         return place.first?.name ?? ""
-        
     }
 }
-

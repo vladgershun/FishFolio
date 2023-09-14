@@ -15,7 +15,6 @@ struct SettingsView: View {
     
     @State private var speciesPresented = false
     @State private var baitPresented = false
-    @State private var locationPresented = false
     @State private var allPresented = false
     
     var body: some View {
@@ -66,7 +65,6 @@ struct SettingsView: View {
                     Section {
                         Button("Delete Species Data", role: .destructive) { speciesPresented = true }
                         Button("Delete Bait Data", role: .destructive) { baitPresented = true }
-                        Button("Delete Location Data", role: .destructive) { locationPresented = true }
                     }
                     
                     Section {
@@ -84,17 +82,11 @@ struct SettingsView: View {
                 } message: {
                     Text("This will delete all user generated bait")
                 }
-                .confirmationDialog("Delete All Locations?", isPresented: $locationPresented) {
-                    Button("Delete", role: .destructive) { }
-                } message: {
-                    Text("This will delete all user generated locations")
-                }
                 .confirmationDialog("Delete All Data?", isPresented: $allPresented) {
                     Button("Delete", role: .destructive) { }
                 } message: {
                     Text("You cannont undo this action")
                 }
-                
             }
         }
     }
