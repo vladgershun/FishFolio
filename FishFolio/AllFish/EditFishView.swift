@@ -79,7 +79,6 @@ struct EditFishView: View {
                 Text("Select Option")
             }
         }
-        
     }
     
     private var speciesSection: some View {
@@ -89,6 +88,7 @@ struct EditFishView: View {
                     withAnimation {
                         weightExpanded = false
                         lengthExpanded = false
+                        isInputActive = false
                     }
                 }
         } label: {
@@ -108,6 +108,7 @@ struct EditFishView: View {
                     withAnimation {
                         weightExpanded = false
                         lengthExpanded = false
+                        isInputActive = false
                     }
                 }
         } label: {
@@ -162,6 +163,7 @@ struct EditFishView: View {
                 withAnimation {
                     lengthExpanded.toggle()
                     weightExpanded = false
+                    isInputActive = false
                 }
             }
         }
@@ -210,6 +212,7 @@ struct EditFishView: View {
                 withAnimation {
                     lengthExpanded = false
                     weightExpanded.toggle()
+                    isInputActive = false
                 }
             }
         }
@@ -231,6 +234,7 @@ struct EditFishView: View {
                 withAnimation {
                     weightExpanded = false
                     lengthExpanded = false
+                    isInputActive = false
                 }
             }
     }
@@ -250,6 +254,7 @@ struct EditFishView: View {
             withAnimation {
                 weightExpanded = false
                 lengthExpanded = false
+                isInputActive = false
             }
         }
     }
@@ -272,6 +277,7 @@ struct EditFishView: View {
             withAnimation {
                 weightExpanded = false
                 lengthExpanded = false
+                isInputActive = false
             }
         }
     }

@@ -30,9 +30,7 @@ struct NewFishView: View {
                     locationSection
                     waterConditionSection
                 }
-                
-                
-                        
+                    
                 if let image = vm.newImage {
                     Section {
                         ZStack(alignment: .bottomTrailing) {
@@ -98,6 +96,7 @@ struct NewFishView: View {
                     withAnimation {
                         weightExpanded = false
                         lengthExpanded = false
+                        isInputActive = false
                     }
                 }
         } label: {
@@ -117,6 +116,7 @@ struct NewFishView: View {
                     withAnimation {
                         weightExpanded = false
                         lengthExpanded = false
+                        isInputActive = false
                     }
                 }
         } label: {
@@ -171,6 +171,7 @@ struct NewFishView: View {
                 withAnimation {
                     lengthExpanded.toggle()
                     weightExpanded = false
+                    isInputActive = false
                 }
             }
         }
@@ -219,6 +220,7 @@ struct NewFishView: View {
                 withAnimation {
                     lengthExpanded = false
                     weightExpanded.toggle()
+                    isInputActive = false
                 }
             }
         }
@@ -259,6 +261,7 @@ struct NewFishView: View {
             withAnimation {
                 weightExpanded = false
                 lengthExpanded = false
+                isInputActive = false
             }
         }
     }
@@ -281,6 +284,7 @@ struct NewFishView: View {
             withAnimation {
                 weightExpanded = false
                 lengthExpanded = false
+                isInputActive = false
             }
         }
         

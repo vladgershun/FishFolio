@@ -38,6 +38,7 @@
 		F5A3FB202AB1AD0D009BF109 /* EditBaitSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB1F2AB1AD0D009BF109 /* EditBaitSubView.swift */; };
 		F5A3FB222AB2450E009BF109 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB212AB2450E009BF109 /* ImageManager.swift */; };
 		F5A3FB242AB2454E009BF109 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB232AB2454E009BF109 /* ImagePicker.swift */; };
+		F5A3FB262AB2932A009BF109 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB252AB2932A009BF109 /* LocationService.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,8 @@
 		F5A3FB1F2AB1AD0D009BF109 /* EditBaitSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBaitSubView.swift; sourceTree = "<group>"; };
 		F5A3FB212AB2450E009BF109 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		F5A3FB232AB2454E009BF109 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F5A3FB252AB2932A009BF109 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		F5A3FB272AB299F0009BF109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +161,7 @@
 		F56C6B992AA7A63F00EBCDAA /* FishFolio */ = {
 			isa = PBXGroup;
 			children = (
+				F5A3FB272AB299F0009BF109 /* Info.plist */,
 				F56C6B9A2AA7A63F00EBCDAA /* FishFolioApp.swift */,
 				F56C6B9C2AA7A63F00EBCDAA /* MainView.swift */,
 				F5A3FB122AB0E6CF009BF109 /* Database */,
@@ -233,6 +237,7 @@
 				F5A3FB192AB13538009BF109 /* CRUDService.swift */,
 				F5A3FB212AB2450E009BF109 /* ImageManager.swift */,
 				F5A3FB232AB2454E009BF109 /* ImagePicker.swift */,
+				F5A3FB252AB2932A009BF109 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				F5A3FB242AB2454E009BF109 /* ImagePicker.swift in Sources */,
 				F5A3FAF92AAFEF37009BF109 /* MapAnnotationView.swift in Sources */,
 				F5A3FB202AB1AD0D009BF109 /* EditBaitSubView.swift in Sources */,
+				F5A3FB262AB2932A009BF109 /* LocationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,7 +528,11 @@
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FishFolio/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App requires access to device's location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App requires access to device's location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App requires access to device's location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,7 +561,11 @@
 				DEVELOPMENT_TEAM = YM5Q6CZ66F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FishFolio/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "App requires usage of camera.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "App requires access to device's location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "App requires access to device's location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "App requires access to device's location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
