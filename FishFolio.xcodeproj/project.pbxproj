@@ -27,7 +27,7 @@
 		F5A3FAF52AAFA0D7009BF109 /* FishRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */; };
 		F5A3FAF72AAFA248009BF109 /* FishDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */; };
 		F5A3FAF92AAFEF37009BF109 /* MapAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */; };
-		F5A3FAFD2AB012D0009BF109 /* UIFishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAFC2AB012D0009BF109 /* UIFishModel.swift */; };
+		F5A3FAFD2AB012D0009BF109 /* UIFish.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FAFC2AB012D0009BF109 /* UIFish.swift */; };
 		F5A3FB052AB01D16009BF109 /* AllFishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB042AB01D16009BF109 /* AllFishTests.swift */; };
 		F5A3FB0E2AB02BAA009BF109 /* AllFishVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB0D2AB02BAA009BF109 /* AllFishVM.swift */; };
 		F5A3FB112AB0E607009BF109 /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB102AB0E607009BF109 /* FetchService.swift */; };
@@ -41,6 +41,11 @@
 		F5A3FB222AB2450E009BF109 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB212AB2450E009BF109 /* ImageManager.swift */; };
 		F5A3FB242AB2454E009BF109 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB232AB2454E009BF109 /* ImagePicker.swift */; };
 		F5A3FB262AB2932A009BF109 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A3FB252AB2932A009BF109 /* LocationService.swift */; };
+		F5C7FCBD2AB4DA4200703650 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7FCBC2AB4DA4200703650 /* DatabaseManager.swift */; };
+		F5C7FCC02AB4DAB100703650 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = F5C7FCBF2AB4DAB100703650 /* GRDB */; };
+		F5C7FCC22AB4E11C00703650 /* DBFish.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7FCC12AB4E11C00703650 /* DBFish.swift */; };
+		F5C7FCC42AB4E47D00703650 /* FishRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7FCC32AB4E47D00703650 /* FishRecord.swift */; };
+		F5C7FCC62AB4E63D00703650 /* ConversionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C7FCC52AB4E63D00703650 /* ConversionService.swift */; };
 		F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */; };
 		F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */; };
 /* End PBXBuildFile section */
@@ -77,7 +82,7 @@
 		F5A3FAF42AAFA0D7009BF109 /* FishRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishRowView.swift; sourceTree = "<group>"; };
 		F5A3FAF62AAFA248009BF109 /* FishDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishDetailView.swift; sourceTree = "<group>"; };
 		F5A3FAF82AAFEF37009BF109 /* MapAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotationView.swift; sourceTree = "<group>"; };
-		F5A3FAFC2AB012D0009BF109 /* UIFishModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFishModel.swift; sourceTree = "<group>"; };
+		F5A3FAFC2AB012D0009BF109 /* UIFish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFish.swift; sourceTree = "<group>"; };
 		F5A3FB022AB01D16009BF109 /* FishFolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishFolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5A3FB042AB01D16009BF109 /* AllFishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFishTests.swift; sourceTree = "<group>"; };
 		F5A3FB0D2AB02BAA009BF109 /* AllFishVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllFishVM.swift; sourceTree = "<group>"; };
@@ -93,6 +98,10 @@
 		F5A3FB232AB2454E009BF109 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F5A3FB252AB2932A009BF109 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		F5A3FB272AB299F0009BF109 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F5C7FCBC2AB4DA4200703650 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		F5C7FCC12AB4E11C00703650 /* DBFish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBFish.swift; sourceTree = "<group>"; };
+		F5C7FCC32AB4E47D00703650 /* FishRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishRecord.swift; sourceTree = "<group>"; };
+		F5C7FCC52AB4E63D00703650 /* ConversionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionService.swift; sourceTree = "<group>"; };
 		F5E3FF802AA7F1CE006D5668 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F5E3FF822AA7FB81006D5668 /* SettingsEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C7FCC02AB4DAB100703650 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,7 +240,9 @@
 		F5A3FAFA2AB00622009BF109 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F5A3FAFC2AB012D0009BF109 /* UIFishModel.swift */,
+				F5A3FAFC2AB012D0009BF109 /* UIFish.swift */,
+				F5C7FCC12AB4E11C00703650 /* DBFish.swift */,
+				F5C7FCC32AB4E47D00703650 /* FishRecord.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 				F5A3FB232AB2454E009BF109 /* ImagePicker.swift */,
 				F5A3FB252AB2932A009BF109 /* LocationService.swift */,
 				F5800F542AB2F6B100AE46E2 /* WeatherService.swift */,
+				F5C7FCC52AB4E63D00703650 /* ConversionService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -260,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				F5A3FB132AB0E6F1009BF109 /* StubDatabase.swift */,
+				F5C7FCBC2AB4DA4200703650 /* DatabaseManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -280,6 +294,9 @@
 			dependencies = (
 			);
 			name = FishFolio;
+			packageProductDependencies = (
+				F5C7FCBF2AB4DAB100703650 /* GRDB */,
+			);
 			productName = FishFolio;
 			productReference = F56C6B972AA7A63F00EBCDAA /* FishFolio.app */;
 			productType = "com.apple.product-type.application";
@@ -330,6 +347,9 @@
 				Base,
 			);
 			mainGroup = F56C6B8E2AA7A63F00EBCDAA;
+			packageReferences = (
+				F5C7FCBE2AB4DAB100703650 /* XCRemoteSwiftPackageReference "GRDB" */,
+			);
 			productRefGroup = F56C6B982AA7A63F00EBCDAA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -368,8 +388,11 @@
 				F5A3FB1A2AB13538009BF109 /* CRUDService.swift in Sources */,
 				F56C6BAA2AA7A8C700EBCDAA /* TabBarItem.swift in Sources */,
 				F5E3FF812AA7F1CE006D5668 /* SettingsView.swift in Sources */,
+				F5C7FCBD2AB4DA4200703650 /* DatabaseManager.swift in Sources */,
 				F56C6BAE2AA7B1D500EBCDAA /* TabBarContainerView.swift in Sources */,
+				F5C7FCC62AB4E63D00703650 /* ConversionService.swift in Sources */,
 				F52ACA022AA908A9007114EC /* SpeciesSubView.swift in Sources */,
+				F5C7FCC22AB4E11C00703650 /* DBFish.swift in Sources */,
 				F5A3FB182AB121C1009BF109 /* NewFishVM.swift in Sources */,
 				F5A3FB222AB2450E009BF109 /* ImageManager.swift in Sources */,
 				F52AC9F62AA857DB007114EC /* NewFishView.swift in Sources */,
@@ -382,10 +405,11 @@
 				F56C6BB02AA7B3EE00EBCDAA /* TabBarItemPreferenceKey.swift in Sources */,
 				F5800F552AB2F6B100AE46E2 /* WeatherService.swift in Sources */,
 				F56C6BAC2AA7AB6200EBCDAA /* TabBarView.swift in Sources */,
+				F5C7FCC42AB4E47D00703650 /* FishRecord.swift in Sources */,
 				F5A3FAF12AAEB900009BF109 /* AllFishView.swift in Sources */,
 				F5A3FB1E2AB1A9D5009BF109 /* EditSpeciesSubView.swift in Sources */,
 				F5E3FF832AA7FB81006D5668 /* SettingsEnums.swift in Sources */,
-				F5A3FAFD2AB012D0009BF109 /* UIFishModel.swift in Sources */,
+				F5A3FAFD2AB012D0009BF109 /* UIFish.swift in Sources */,
 				F51DE0482AA95570000E744D /* StatisticsView.swift in Sources */,
 				F56C6BB22AA7CA2B00EBCDAA /* TabBarBackground.swift in Sources */,
 				F51CEF3E2AB42A2000DCCB42 /* TabSelection.swift in Sources */,
@@ -668,6 +692,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F5C7FCBE2AB4DAB100703650 /* XCRemoteSwiftPackageReference "GRDB" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F5C7FCBF2AB4DAB100703650 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F5C7FCBE2AB4DAB100703650 /* XCRemoteSwiftPackageReference "GRDB" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F56C6B8F2AA7A63F00EBCDAA /* Project object */;
 }

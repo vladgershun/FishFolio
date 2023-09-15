@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    var db = DatabaseManager.shared
     @State private var speciesPresented = false
     @State private var baitPresented = false
     @State private var allPresented = false
@@ -40,7 +41,10 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        Button("Delete All Data", role: .destructive) { allPresented = true }
+                        Button("Delete All Data", role: .destructive) {
+                            allPresented = true
+                            try? db.testDelete()
+                        }
                     }
                 }
                 .navigationTitle("Settings")
@@ -86,7 +90,6 @@ struct UnitsPickers: View {
                 }
             }
             .pickerStyle(.menu)
-            
             
             Picker("Temperature", selection: $temperatureUnits) {
                 ForEach(TemperatureUnits.allCases) { temperature in

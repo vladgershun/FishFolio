@@ -21,10 +21,15 @@ protocol CRUDService {
 
 struct StubCRUDService: CRUDService {
     
-    var db = StubDatabase.shared
+    private var db = StubDatabase.shared
+    
+    private var database = DatabaseManager.shared
+    
+    private var conversionService = DBConversionService()
     
     func addFish(_ fish: UIFish) {
-        db.demoUIFish.append(fish)
+        let endcodedFish = conversionService.encode(fish: fish)
+        try! database.add(endcodedFish)
     }
     
     func editFish(_ fish: UIFish) {

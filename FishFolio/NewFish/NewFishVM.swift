@@ -78,6 +78,7 @@ class NewFishVM: ObservableObject {
                              image: newImage)
         
         crudService.addFish(newFish)
+        
     }
     
     func getSpecies() async {

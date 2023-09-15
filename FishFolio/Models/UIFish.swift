@@ -1,5 +1,5 @@
 //
-//  UIFishModel.swift
+//  UIFish.swift
 //  FishFolio
 //
 //  Created by Vlad Gershun on 9/11/23.
@@ -28,6 +28,8 @@ struct UIFish: Identifiable, Equatable {
     var locationName: String
     var image: UIImage?
 }
+
+
 
 struct CustomLength {
     var whole: Int?
