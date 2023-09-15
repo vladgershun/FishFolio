@@ -50,14 +50,12 @@ class NewFishVM: ObservableObject {
         newImage = nil
     }
     
-//    func getTemperature() {
-//        Task {
-//            if let coordinates = locationService.location {
-//                let weather = await weatherService.getTemperature(location: CLLocation(latitude: 0, longitude: 0))
-//                self.newTemperature = weather?.currentWeather.temperature
-//            }
-//        }
-//    }
+    func getTemperature() async throws {
+        if let coordinates = locationService.location {
+            let weather = await weatherService.getTemperature(location: CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude))
+            self.newTemperature = weather?.currentWeather.temperature
+        }
+    }
     
     func getLocationName() async throws {
         if let coordinates = locationService.location {

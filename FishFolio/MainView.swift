@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var tabSelection: TabBarItem = .new
+    @State private var tabSelection: TabBarItem = .fish
     
     var body: some View {
         //        TabBarContainerView(selection: $tabSelection) {

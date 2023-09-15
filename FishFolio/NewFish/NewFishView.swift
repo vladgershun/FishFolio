@@ -75,7 +75,8 @@ struct NewFishView: View {
             }
         }
         .tabTask(TabBarItem.new) {
-           try? await vm.getLocationName()
+            try? await vm.getLocationName()
+            try? await vm.getTemperature()
         }
         .navigationViewStyle(.stack)
         .confirmationDialog("Select Photo Option", isPresented: $photoOptionShowing) {

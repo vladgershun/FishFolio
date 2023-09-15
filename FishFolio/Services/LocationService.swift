@@ -31,7 +31,7 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
         let geoCoder = CLGeocoder()
         let location = CLLocation(latitude: latitude, longitude: longitude)
         
-        let place = try await geoCoder.reverseGeocodeLocation(location)
-        return place.first?.name ?? ""
+        let places = try await geoCoder.reverseGeocodeLocation(location)
+        return places.map { $0.inlandWater ?? $0.name ?? $0.description }.first ?? ""
     }
 }

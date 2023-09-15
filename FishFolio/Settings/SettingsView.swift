@@ -9,10 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @AppStorage("weightUnits") private var weightUnits: WeightUnits = .pounds
-    @AppStorage("lengthUnits") private var lengthUnits: LengthUnits = .inches
-    @AppStorage("temperatureUnits") private var temperatureUnits: TemperatureUnits = .fahrenheit
-    
     @State private var speciesPresented = false
     @State private var baitPresented = false
     @State private var allPresented = false
@@ -36,31 +32,7 @@ struct SettingsView: View {
                         }
                     }
                     
-                    Section("Units") {
-                        Picker("Weight", selection: $weightUnits) {
-                            ForEach(WeightUnits.allCases) { weight in
-                                Text(weight.description)
-                            }
-                        }
-                        .pickerStyle(.menu)
-                        
-                        Picker("Length", selection: $lengthUnits) {
-                            ForEach(LengthUnits.allCases) { length in
-                                Text(length.description)
-                            }
-                        }
-                        .pickerStyle(.menu)
-                        
-                        
-                        Picker("Temperature", selection: $temperatureUnits) {
-                            ForEach(TemperatureUnits.allCases) { temperature in
-                                Text(temperature.description)
-                            }
-                        }
-                        
-                        .pickerStyle(.menu)
-                    }
-                    .tint(.secondary)
+                    UnitsPickers()
                     
                     Section {
                         Button("Delete Species Data", role: .destructive) { speciesPresented = true }
@@ -89,6 +61,41 @@ struct SettingsView: View {
                 }
             }
         }
+    }
+}
+
+struct UnitsPickers: View {
+    
+    @AppStorage("weightUnits") private var weightUnits: WeightUnits = .pounds
+    @AppStorage("lengthUnits") private var lengthUnits: LengthUnits = .inches
+    @AppStorage("temperatureUnits") private var temperatureUnits: TemperatureUnits = .fahrenheit
+    
+    var body: some View {
+        
+        Section("Units") {
+            Picker("Weight", selection: $weightUnits) {
+                ForEach(WeightUnits.allCases) { weight in
+                    Text(weight.description)
+                }
+            }
+            .pickerStyle(.menu)
+            
+            Picker("Length", selection: $lengthUnits) {
+                ForEach(LengthUnits.allCases) { length in
+                    Text(length.description)
+                }
+            }
+            .pickerStyle(.menu)
+            
+            
+            Picker("Temperature", selection: $temperatureUnits) {
+                ForEach(TemperatureUnits.allCases) { temperature in
+                    Text(temperature.description)
+                }
+            }
+            .pickerStyle(.menu)
+        }
+        .tint(.secondary)
     }
 }
 

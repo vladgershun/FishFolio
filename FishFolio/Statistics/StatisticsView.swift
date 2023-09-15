@@ -19,7 +19,7 @@ struct StatisticsView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @AppStorage("weightUnits") private var weightUnits: WeightUnits = .pounds
-    
+
     let data = [
         TestData(date: Calendar.current.date(byAdding: .month, value: 1, to: .now)!, totalCaught: 3),
         TestData(date: Calendar.current.date(byAdding: .month, value: 2, to: .now)!, totalCaught: 13),

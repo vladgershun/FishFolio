@@ -9,19 +9,21 @@ import Foundation
 import CoreLocation
 import WeatherKit
 
-protocol IWeatherService {
+protocol WeatherService {
     func getTemperature(location: CLLocation) async -> Weather?
 }
 
-struct WeatherManager: IWeatherService {
+struct WeatherManager: WeatherService {
     
-    let service = WeatherService.shared
+    let service = WeatherKit.WeatherService.shared
     
     func getTemperature(location: CLLocation) async -> Weather? {
         var weather: Weather?
         
         do {
-            weather = try await service.weather(for: CLLocation(latitude: 45.707115, longitude: -122.656846))
+            weather = try await service.weather(for: location)
+
+//            weather = try await service.weather(for: CLLocation(latitude: 45.707115, longitude: -122.656846))
         } catch {
             print("Could not get weather")
         }
