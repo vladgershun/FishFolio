@@ -74,6 +74,9 @@ struct NewFishView: View {
                     .ignoresSafeArea()
             }
         }
+        .tabTask(TabBarItem.new) {
+           try? await vm.getLocationName()
+        }
         .navigationViewStyle(.stack)
         .confirmationDialog("Select Photo Option", isPresented: $photoOptionShowing) {
             Button("Camera") {

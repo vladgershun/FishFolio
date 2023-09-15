@@ -18,6 +18,8 @@ class NewFishVM: ObservableObject {
     /// Service used for location data
     private var locationService = LocationService()
     
+    private var weatherService = WeatherManager()
+    
     /// Variables for form
     @Published var newSpecies: String = ""
     @Published var newBait: String = ""
@@ -34,7 +36,6 @@ class NewFishVM: ObservableObject {
     
     init(crudService: any CRUDService = StubCRUDService()) {
         self.crudService = crudService
-        getLocationName()
     }
     
     func clearForm() {
@@ -49,11 +50,18 @@ class NewFishVM: ObservableObject {
         newImage = nil
     }
     
-    func getLocationName() {
-        Task {
-            if let coordinates = locationService.location {
-                self.newLocationName = try await locationService.getLocationName(latitude: coordinates.latitude, longitude: coordinates.longitude)
-            }
+//    func getTemperature() {
+//        Task {
+//            if let coordinates = locationService.location {
+//                let weather = await weatherService.getTemperature(location: CLLocation(latitude: 0, longitude: 0))
+//                self.newTemperature = weather?.currentWeather.temperature
+//            }
+//        }
+//    }
+    
+    func getLocationName() async throws {
+        if let coordinates = locationService.location {
+            self.newLocationName = try await locationService.getLocationName(latitude: coordinates.latitude, longitude: coordinates.longitude)
         }
     }
     
@@ -102,5 +110,4 @@ class NewFishVM: ObservableObject {
         crudService.deleteBait(bait)
     }
 }
-
 

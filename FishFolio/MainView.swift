@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var tabSelection: TabBarItem = .fish
+    @State private var tabSelection: TabBarItem = .new
     
     var body: some View {
         //        TabBarContainerView(selection: $tabSelection) {
@@ -22,26 +22,32 @@ struct MainView: View {
         //            SettingsView()
         //                .tabBarItem(tab: .settings, selection: $tabSelection)
         //        }
-        TabView {
+        TabView(selection: $tabSelection) {
             AllFishView()
                 .tabItem {
                     Label(TabBarItem.fish.title, systemImage: TabBarItem.fish.iconName)
                 }
+                .tag(TabBarItem.fish)
             NewFishView()
                 .tabItem {
                     Label(TabBarItem.new.title, systemImage: TabBarItem.new.iconName)
                 }
+                .tag(TabBarItem.new)
             StatisticsView()
                 .tabItem {
                     Label(TabBarItem.statistics.title, systemImage: TabBarItem.statistics.iconName)
                 }
+                .tag(TabBarItem.statistics)
             SettingsView()
                 .tabItem {
                     Label(TabBarItem.settings.title, systemImage: TabBarItem.settings.iconName)
                 }
+                .tag(TabBarItem.settings)
         }
+        .selectedTab(tabSelection)
     }
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

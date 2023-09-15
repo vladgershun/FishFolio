@@ -26,11 +26,11 @@ struct AllFishView: View {
             }
             .navigationBarTitle("Fish")
         }
-        .task {
+        .task(id: vm.allFish) {
             //temp publisher for live data
-            for await _ in vm.$allFish.values {
+//            for await _ in vm.$allFish.values {
                 await vm.task() 
-            }
+//            }
         }
     }
 
