@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WaterCondition: CaseIterable, Identifiable, CustomStringConvertible {
+enum WaterCondition: String, CaseIterable, Identifiable, CustomStringConvertible {
     
     case algae
     case clear

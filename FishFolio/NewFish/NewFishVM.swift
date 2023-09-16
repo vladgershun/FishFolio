@@ -20,6 +20,7 @@ class NewFishVM: ObservableObject {
     
     private var weatherService = WeatherManager()
     
+    
     /// Variables for form
     @Published var newSpecies: String = ""
     @Published var newBait: String = ""
@@ -64,7 +65,7 @@ class NewFishVM: ObservableObject {
     }
     
     func addFish() {
-
+        
         let newFish = UIFish(id: UUID(),
                              species: newSpecies,
                              bait: newBait,

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    var db = DatabaseManager.shared
+    var db = DatabaseManager.shared // temp
     @State private var speciesPresented = false
     @State private var baitPresented = false
     @State private var allPresented = false
@@ -43,7 +43,7 @@ struct SettingsView: View {
                     Section {
                         Button("Delete All Data", role: .destructive) {
                             allPresented = true
-                            try? db.testDelete()
+                            try? db.deleteAllFish() // temp
                         }
                     }
                 }

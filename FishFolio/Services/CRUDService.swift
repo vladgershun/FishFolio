@@ -27,7 +27,14 @@ struct StubCRUDService: CRUDService {
     
     private var conversionService = DBConversionService()
     
+    private var imageManager = ImageManager.shared
+    
     func addFish(_ fish: UIFish) {
+        
+        if let image = fish.image {
+            imageManager.saveImage(image: image, imageID: fish.id, folderName: "FishFolio")
+        }
+        
         let endcodedFish = conversionService.encode(fish: fish)
         try! database.add(endcodedFish)
     }

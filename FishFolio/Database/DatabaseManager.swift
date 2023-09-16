@@ -92,17 +92,14 @@ class DatabaseManager {
                            locationName: newFish.locationName,
                            imageID: newFish.imageID)
             .update(db)
-            
-            
         }
     }
     
-    func testDelete() throws {
+    func deleteAllFish() throws {
         try dbQueue.write { db in
             _ = try FishRecord.deleteAll(db)
         }
     }
-    
     
     ///
     /// Attempts to delete a fish based on `id` in database.
