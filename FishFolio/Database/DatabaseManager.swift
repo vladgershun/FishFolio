@@ -104,7 +104,7 @@ class DatabaseManager {
     ///
     /// Attempts to delete a fish based on `id` in database.
     ///
-    func deleteCatch(for id: DBFish.ID) throws {
+    func deleteFish(for id: DBFish.ID) throws {
         try dbQueue.write { db in
             _ = try FishRecord.deleteOne(db, key: id)
         }
@@ -137,10 +137,6 @@ class DatabaseManager {
     ///
     /// Returns statistics from database.
     ///
-//    func getStatistics() -> AnyPublisher<Statistics, Error> {
-//        fatalError()
-//    }
-    
     
     func getTotalCaught() -> Int? {
         let totalCaughtRequest: SQLRequest<Int> = "SELECT COUNT(*) FROM catchRecord"

@@ -42,7 +42,6 @@ struct DBConversionService: ConversionService {
             decodedImage = imageManager.getImage(imageID: imageID, folderName: "FishFolio")
         }
         
-        
         let decodedFish = UIFish(id: fish.id,
                                  species: fish.species,
                                  bait: fish.bait,

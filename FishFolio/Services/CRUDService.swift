@@ -40,13 +40,17 @@ struct StubCRUDService: CRUDService {
     }
     
     func editFish(_ fish: UIFish) {
-
+        if let image = fish.image {
+            imageManager.saveImage(image: image, imageID: fish.id, folderName: "FishFolio")
+        }
+        
+        let encodedFish = conversionService.encode(fish: fish)
+        try! database.update(encodedFish)
     }
     
     func deleteFish(_ fish: UIFish) {
-        if let index = db.demoUIFish.firstIndex(of: fish) {
-            db.demoUIFish.remove(at: index)
-        }
+        let encodedFish = conversionService.encode(fish: fish)
+        try! database.deleteFish(for: encodedFish.id)
     }
     
     func getSpecies() -> [String] {

@@ -45,17 +45,19 @@ class DetailVM: ObservableObject {
     
     func editFish(_ fish: UIFish) {
         
-        let _ = UIFish(id: fish.id,
-                                 species: updateSpecies,
-                                 bait: updateBait,
-                                 length: updateLength.value,
-                                 weight: updateWeight.value,
-                                 timeCaught: fish.timeCaught,
-                                 temperature: fish.temperature,
-                                 waterCondition: updateWaterCondition,
-                                 coordinates: fish.coordinates,
-                                 locationName: updateLocationName,
-                                 image: updateImage)
+        let fish = UIFish(id: fish.id,
+                       species: updateSpecies,
+                       bait: updateBait,
+                       length: updateLength.value,
+                       weight: updateWeight.value,
+                       timeCaught: fish.timeCaught,
+                       temperature: fish.temperature,
+                       waterCondition: updateWaterCondition,
+                       coordinates: fish.coordinates,
+                       locationName: updateLocationName,
+                       image: updateImage)
+        
+        crudService.editFish(fish)
     }
     
     func deleteFish(_ fish: UIFish) {

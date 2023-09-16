@@ -59,7 +59,7 @@ struct EditFishView: View {
                 }
                 
                 Section {
-                    createButtonSection
+                    saveButtonSection
                 }
             }
             .fullScreenCover(isPresented: $pickerShowing){
@@ -282,11 +282,13 @@ struct EditFishView: View {
         }
     }
     
-    private var createButtonSection: some View {
+    private var saveButtonSection: some View {
         Button {
             isInputActive = false
             lengthExpanded = false
             weightExpanded = false
+            vm.editFish(fish)
+            dismiss()
         } label: {
             HStack {
                 Spacer()

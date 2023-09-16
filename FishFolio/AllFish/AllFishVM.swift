@@ -25,9 +25,8 @@ class AllFishVM: ObservableObject {
             .assign(to: &$dbFish)
         
     }
-    
+    // need to fix this, editfish isnt triggering changes
     func task() async {
-//        self.allFish = fetchService.getAllFish()
         self.allFish = dbFish.map { conversionService.decode(fish: $0) }
     }
 }
