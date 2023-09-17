@@ -54,11 +54,14 @@ struct StubCRUDService: CRUDService {
     }
     
     func getSpecies() -> [String] {
+        
+        let x = try? database.querySpeciesList()
         return db.returnSpecies()
     }
     
     func addSpecies(_ species: String) {
         db.demoSpecies.append(species)
+        try! database.addSpecies(species)
     }
     
     func deleteSpecies(_ species: String) {

@@ -51,7 +51,35 @@ class DatabaseManager {
             }
         }
         try migrator.migrate(dbQueue)
+        
+        migrator.registerMigration("Create species") { db in
+            try db.create(table: "species") { t in
+                t.column("speciesName", .text)
+            }
+        }
+        try migrator.migrate(dbQueue)
     }
+    
+    struct SpeciesRecord: Codable, FetchableRecord, PersistableRecord {
+        var speciesName: String
+    }
+    
+    func addSpecies(_ species: String) throws {
+        try dbQueue.write { db in
+            try SpeciesRecord(speciesName: species)
+                .insert(db)
+        }
+    }
+    
+    func querySpeciesList() throws -> [String] {
+        try dbQueue.write { db in
+            let speciesList = try dbQueue.unsafeReentrantRead { db in
+                try SpeciesRecord.fetchAll(db).map { $0.speciesName }
+            }
+            return speciesList
+        }
+    }
+    
     
     ///
     /// Attempts to add `newFish` to database.
