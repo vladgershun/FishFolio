@@ -13,13 +13,24 @@ class ImageManager {
     
     private init() { }
     
+    func deleteImage(imageID: UUID, folderName: String) {
+        
+        guard let url = getURLForImage(imageID: imageID, folderName: folderName) else { return }
+        guard FileManager.default.fileExists(atPath: url.path) else { return }
+        
+        do {
+            try FileManager.default.removeItem(atPath: url.path)
+        } catch {
+            print("Could not delete image")
+        }
+    }
+    
     func saveImage(image: UIImage, imageID: UUID, folderName: String) {
         
         createFolderIfNeeded(folderName: folderName)
         
         guard let data = image.jpegData(compressionQuality: 1) else { return }
         guard let url = getURLForImage(imageID: imageID, folderName: folderName) else { return }
-        
         do {
             try data.write(to: url)
         } catch {

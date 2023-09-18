@@ -42,7 +42,10 @@ struct StubCRUDService: CRUDService {
     func editFish(_ fish: UIFish) {
         if let image = fish.image {
             imageManager.saveImage(image: image, imageID: fish.id, folderName: "FishFolio")
+        } else {
+            imageManager.deleteImage(imageID: fish.id, folderName: "FishFolio")
         }
+        
         
         let encodedFish = conversionService.encode(fish: fish)
         try! database.update(encodedFish)
