@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    var db = DatabaseManager.shared // temp
+    @StateObject private var vm = SettingsVM()
     @State private var speciesPresented = false
     @State private var baitPresented = false
     @State private var allPresented = false
@@ -41,25 +41,22 @@ struct SettingsView: View {
                     }
                     
                     Section {
-                        Button("Delete All Data", role: .destructive) {
-                            allPresented = true
-                            try? db.deleteAllFish() // temp
-                        }
+                        Button("Delete All Data", role: .destructive) { allPresented = true }
                     }
                 }
                 .navigationTitle("Settings")
                 .confirmationDialog("Delete All Species?", isPresented: $speciesPresented) {
-                    Button("Delete", role: .destructive) { }
+                    Button("Delete", role: .destructive) { vm.deleteSpeciesData() }
                 } message: {
                     Text("This will delete all user generated species")
                 }
                 .confirmationDialog("Delete All Bait?", isPresented: $baitPresented) {
-                    Button("Delete", role: .destructive) { }
+                    Button("Delete", role: .destructive) { vm.deleteBaitData() }
                 } message: {
                     Text("This will delete all user generated bait")
                 }
                 .confirmationDialog("Delete All Data?", isPresented: $allPresented) {
-                    Button("Delete", role: .destructive) { }
+                    Button("Delete", role: .destructive) { vm.deleteAllData() }
                 } message: {
                     Text("You cannont undo this action")
                 }

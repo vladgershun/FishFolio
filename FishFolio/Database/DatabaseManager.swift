@@ -10,6 +10,16 @@ import GRDB
 import Foundation
 import CoreLocation
 
+struct Species: Codable, FetchableRecord, PersistableRecord {
+    var id: String { return speciesName }
+    var speciesName: String
+}
+
+struct Baits: Codable, FetchableRecord, PersistableRecord {
+    var id: String { return baitName }
+    var baitName: String
+}
+
 class DatabaseManager {
     
     static let shared = DatabaseManager()
@@ -29,9 +39,7 @@ class DatabaseManager {
         try! runMigrations()
     }
     
-    ///
     /// Attempts to create new table and migrates if already exists.
-    ///
     func runMigrations() throws {
         var migrator = DatabaseMigrator()
         migrator.registerMigration("Create fish") { db in
@@ -50,41 +58,28 @@ class DatabaseManager {
                 t.column("imageID", .text)
             }
         }
-        try migrator.migrate(dbQueue)
         
         migrator.registerMigration("Create species") { db in
             try db.create(table: "species") { t in
+                t.primaryKey("id", .text)
                 t.column("speciesName", .text)
             }
         }
+        
+        migrator.registerMigration("Create baits") { db in
+            try db.create(table: "baits") { t in
+                t.primaryKey("id", .text)
+                t.column("baitName", .text)
+            }
+        }
+        
         try migrator.migrate(dbQueue)
     }
     
-    struct SpeciesRecord: Codable, FetchableRecord, PersistableRecord {
-        var speciesName: String
-    }
-    
-    func addSpecies(_ species: String) throws {
-        try dbQueue.write { db in
-            try SpeciesRecord(speciesName: species)
-                .insert(db)
-        }
-    }
-    
-    func querySpeciesList() throws -> [String] {
-        try dbQueue.write { db in
-            let speciesList = try dbQueue.unsafeReentrantRead { db in
-                try SpeciesRecord.fetchAll(db).map { $0.speciesName }
-            }
-            return speciesList
-        }
-    }
-    
-    
-    ///
+    /// Fish Operations
+
     /// Attempts to add `newFish` to database.
-    ///
-    func add(_ newFish: DBFish) throws {
+    func addFish(_ newFish: DBFish) throws {
         try dbQueue.write { db in
             try FishRecord(id: newFish.id,
                            species: newFish.species,
@@ -102,10 +97,8 @@ class DatabaseManager {
         }
     }
     
-    ///
     /// Attempts to update `newFish` to database.
-    ///
-    func update(_ newFish: DBFish) throws {
+    func updateFish(_ newFish: DBFish) throws {
         try dbQueue.write { db in
             try FishRecord(id: newFish.id,
                            species: newFish.species,
@@ -123,24 +116,21 @@ class DatabaseManager {
         }
     }
     
-    func deleteAllFish() throws {
-        try dbQueue.write { db in
-            _ = try FishRecord.deleteAll(db)
-        }
-    }
-    
-    ///
     /// Attempts to delete a fish based on `id` in database.
-    ///
     func deleteFish(for id: DBFish.ID) throws {
         try dbQueue.write { db in
             _ = try FishRecord.deleteOne(db, key: id)
         }
     }
     
-    ///
+    /// Deletes all Fish data
+    func deleteAllFish() throws {
+        try dbQueue.write { db in
+            _ = try FishRecord.deleteAll(db)
+        }
+    }
+    
     /// Returns array of all fish from database.
-    ///
     func queryAllFish() -> some Publisher<[DBFish], Error> {
         ValueObservation.tracking(FishRecord.fetchAll)
             .publisher(in: dbQueue)
@@ -161,6 +151,77 @@ class DatabaseManager {
                 }
             }
     }
+    
+    
+    /// Species List Operations
+    
+    /// Attemps to add `species` to database
+    func addSpecies(_ species: String) throws {
+        try dbQueue.write { db in
+            try Species(speciesName: species)
+                .insert(db)
+        }
+    }
+    
+    /// Attempts to delete `species` from database
+    func deleteSpecies(_ species: String) throws {
+        try dbQueue.write { db in
+            _ = try Species.deleteOne(db, key: species)
+        }
+    }
+    
+    /// Deletes all species from database
+    func deleteAllSpecies() throws {
+        try dbQueue.write { db in
+            _ = try Species.deleteAll(db)
+        }
+    }
+    
+    /// Returns array of all species from database
+    func querySpeciesList() throws -> [String] {
+        try dbQueue.write { db in
+            let speciesList = try dbQueue.unsafeReentrantRead { db in
+                try Species.fetchAll(db).map { $0.speciesName }
+            }
+            return speciesList
+        }
+    }
+    
+    
+    /// Bait List Section
+    
+    /// Attemps to add `bait` to database
+    func addBait(_ bait: String) throws {
+        try dbQueue.write { db in
+            try Baits(baitName: bait)
+                .insert(db)
+        }
+    }
+    
+    /// Attempts to delete `bait` from database
+    func deleteBait(_ bait: String) throws {
+        try dbQueue.write { db in
+            _ = try Baits.deleteOne(db, key: bait)
+        }
+    }
+    
+    /// Deletes all species from database
+    func deleteAllBaits() throws {
+        try dbQueue.write { db in
+            _ = try Baits.deleteAll(db)
+        }
+    }
+    
+    /// Returns array of all species from database
+    func queryBaitsList() throws -> [String] {
+        try dbQueue.write { db in
+            let baitsList = try dbQueue.unsafeReentrantRead { db in
+                try Baits.fetchAll(db).map { $0.baitName }
+            }
+            return baitsList
+        }
+    }
+    
     
     ///
     /// Returns statistics from database.
@@ -193,6 +254,7 @@ class DatabaseManager {
         }
         return heaviestCatch
     }
+    
     
 
 }

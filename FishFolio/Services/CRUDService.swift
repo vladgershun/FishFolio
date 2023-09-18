@@ -11,33 +11,34 @@ protocol CRUDService {
     func addFish(_ fish: UIFish)
     func editFish(_ fish: UIFish)
     func deleteFish(_ fish: UIFish)
+    func deleteAllFish()
     func getSpecies() -> [String]
     func addSpecies(_ species: String)
     func deleteSpecies(_ species: String)
+    func deleteAllSpecies()
     func getBaits() -> [String]
     func addBait(_ bait: String)
     func deleteBait(_ bait: String)
+    func deleteAllBait()
 }
 
 struct StubCRUDService: CRUDService {
     
-    private var db = StubDatabase.shared
-    
-    private var database = DatabaseManager.shared
+    private var db = DatabaseManager.shared
     
     private var conversionService = DBConversionService()
     
     private var imageManager = ImageManager.shared
     
+    /// Fish Operations
     func addFish(_ fish: UIFish) {
-        
         if let image = fish.image {
             imageManager.saveImage(image: image, imageID: fish.id, folderName: "FishFolio")
         }
         
         let endcodedFish = conversionService.encode(fish: fish)
-        try! database.add(endcodedFish)
-    }
+        try! db.addFish(endcodedFish)
+    } // Done
     
     func editFish(_ fish: UIFish) {
         if let image = fish.image {
@@ -46,46 +47,50 @@ struct StubCRUDService: CRUDService {
             imageManager.deleteImage(imageID: fish.id, folderName: "FishFolio")
         }
         
-        
         let encodedFish = conversionService.encode(fish: fish)
-        try! database.update(encodedFish)
-    }
+        try! db.updateFish(encodedFish)
+    } // Done
     
     func deleteFish(_ fish: UIFish) {
         let encodedFish = conversionService.encode(fish: fish)
-        try! database.deleteFish(for: encodedFish.id)
-    }
+        try! db.deleteFish(for: encodedFish.id)
+    } // Done
     
+    func deleteAllFish() {
+        try! db.deleteAllFish()
+    } // Done
+    
+    /// Species List Operations
     func getSpecies() -> [String] {
-        
-        let x = try? database.querySpeciesList()
-        return db.returnSpecies()
-    }
+        try! db.querySpeciesList()
+    } // Done
     
     func addSpecies(_ species: String) {
-        db.demoSpecies.append(species)
-        try! database.addSpecies(species)
-    }
+        try! db.addSpecies(species)
+    } // Done
     
     func deleteSpecies(_ species: String) {
-        if let index = db.demoSpecies.firstIndex(of: species) {
-            db.demoSpecies.remove(at: index)
-        }
+        try! db.deleteSpecies(species)
     }
     
+    func deleteAllSpecies() {
+        try! db.deleteAllSpecies()
+    } // Done
+    
+    /// Bait List Operations
     func getBaits() -> [String] {
-        return db.returnBaits()
+        try! db.queryBaitsList()
     }
     
     func addBait(_ bait: String) {
-        db.demoBaits.append(bait)
+        try! db.addBait(bait)
     }
     
     func deleteBait(_ bait: String) {
-        if let index = db.demoBaits.firstIndex(of: bait) {
-            db.demoBaits.remove(at: index)
-        }
+        try! db.deleteBait(bait)
     }
     
-    
+    func deleteAllBait() {
+        try! db.deleteAllBaits()
+    }
 }
