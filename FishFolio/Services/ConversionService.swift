@@ -30,7 +30,7 @@ struct DBConversionService: ConversionService {
                       latitude: fish.coordinates?.latitude,
                       longitude: fish.coordinates?.longitude,
                       locationName: fish.locationName,
-                      imageID: fish.id)
+                      imageID: fish.image != nil ? fish.id : nil)
         
     }
     

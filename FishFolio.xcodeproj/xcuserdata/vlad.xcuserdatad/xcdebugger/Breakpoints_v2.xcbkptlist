@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "AD3819F6-57B4-4FD6-9FF2-56AAA05D9CC5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E158128-9193-4E4A-A36E-D82E846B670E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FishFolio/AllFish/FishDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "7E158128-9193-4E4A-A36E-D82E846B670E - 7ce6e1be957847e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.listRowInsets(Swift.Optional&lt;SwiftUI.EdgeInsets&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.metricsSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.locationSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of FishFolio.FishDetailView.mapSection : some&gt;&gt;.0, &lt;&lt;opaque return type of FishFolio.FishDetailView.deleteButtonSection : some&gt;&gt;.0)&gt; in FishFolio.FishDetailView.body.getter : some"
+                  moduleName = "FishFolio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vlad/Developer/FishFolio/FishFolio/AllFish/FishDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1240">
+               </Location>
+               <Location
+                  uuid = "7E158128-9193-4E4A-A36E-D82E846B670E - 390cac58bb861124"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.scaledToFit() -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.listRowInsets(Swift.Optional&lt;SwiftUI.EdgeInsets&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.metricsSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.locationSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of FishFolio.FishDetailView.mapSection : some&gt;&gt;.0, &lt;&lt;opaque return type of FishFolio.FishDetailView.deleteButtonSection : some&gt;&gt;.0)&gt; in FishFolio.FishDetailView.body.getter : some"
+                  moduleName = "FishFolio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vlad/Developer/FishFolio/FishFolio/AllFish/FishDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "240">
+               </Location>
+               <Location
+                  uuid = "7E158128-9193-4E4A-A36E-D82E846B670E - 7ce6e1be957847e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.listRowInsets(Swift.Optional&lt;SwiftUI.EdgeInsets&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.metricsSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.locationSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of FishFolio.FishDetailView.mapSection : some&gt;&gt;.0, &lt;&lt;opaque return type of FishFolio.FishDetailView.deleteButtonSection : some&gt;&gt;.0)&gt; in FishFolio.FishDetailView.body.getter : some"
+                  moduleName = "FishFolio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vlad/Developer/FishFolio/FishFolio/AllFish/FishDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "1436">
+               </Location>
+               <Location
+                  uuid = "7E158128-9193-4E4A-A36E-D82E846B670E - 9fdd36100155af1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.id&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.TupleView&lt;(Swift.Optional&lt;&lt;&lt;opaque return type of SwiftUI.View.listRowInsets(Swift.Optional&lt;SwiftUI.EdgeInsets&gt;) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.metricsSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, SwiftUI.Section&lt;SwiftUI.Text, &lt;&lt;opaque return type of FishFolio.FishDetailView.locationSection : some&gt;&gt;.0, SwiftUI.EmptyView&gt;, &lt;&lt;opaque return type of FishFolio.FishDetailView.mapSection : some&gt;&gt;.0, &lt;&lt;opaque return type of FishFolio.FishDetailView.deleteButtonSection : some&gt;&gt;.0)&gt; in FishFolio.FishDetailView.body.getter : some"
+                  moduleName = "FishFolio"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vlad/Developer/FishFolio/FishFolio/AllFish/FishDetailView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "364">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
